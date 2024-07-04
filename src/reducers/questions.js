@@ -13,11 +13,10 @@ export default function receiveQuestions(state = {}, action) {
       console.log(question);
       //let optionOneText  = {}; let optionTwoText={};
         
-      
-
+    
       return {
         ...state,
-        [action.question.id]: action.tweet,
+        [action.question.id]: action.question,
 
       }
     default:
