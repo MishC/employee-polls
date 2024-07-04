@@ -24,12 +24,14 @@ function Signin({ userSetUp }) {
             ref={id}
             className="signin-input"
             placeholder="Enter your ID"
+            autocomplete="users-id" 
           />
           <input
             type="password"
             ref={password}
             className="signin-input"
             placeholder="Enter your password"
+            autocomplete="off" 
           />
         </div>
         <button type="submit" className="signin-button">Submit</button>

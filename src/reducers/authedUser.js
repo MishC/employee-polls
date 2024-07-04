@@ -22,8 +22,7 @@ const initialState = {
         };
      case CLEAR_AUTHED_USER:
             return {
-              ...state,
-              payload: initialState
+              initialState
             };
     
       default:
