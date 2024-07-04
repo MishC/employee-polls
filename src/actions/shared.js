@@ -4,9 +4,6 @@ import { startLoading, stopLoading } from "./loading";
 import { setAuthedUser } from "./authedUser";
 
 
-export function authenticate(id,password,authenticated) {
-   return (dispatch)=>  dispatch(setAuthedUser(id,password,authenticated))
-}
 export function getAllUsers() {
     return (dispatch) => {
       dispatch(startLoading()); // Dispatch loading start action

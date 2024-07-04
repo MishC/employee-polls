@@ -3,8 +3,8 @@ import { useState, useEffect, Fragment } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
-import Nav from './components/Nav';
-import Signin from './components/Signin';
+import Nav from './components/Nav/Nav';
+import Signin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard';
 import { getAllUsers } from './actions/shared';
 import { setAuthedUser } from './actions/authedUser';
@@ -24,20 +24,18 @@ const App = ({ authedUser, users }) => {
     if (userId && userPassword) {
         const user = Object.values(users).map(user => Object.values(user)).find(user => user.includes(userPassword) && user.includes(userId));
         if (user) {
-            dispatch(setAuthedUser(userId, userPassword, user, true));
+            dispatch(setAuthedUser(userId, userPassword, users[userId], true));
         } else {
             console.log("Invalid user or password");
         }
     }
 }, [userId, userPassword]);
+
   const userSetUp = (id, password) => {
 
     setUserId(id);
     setUserPassword(password);
    
-   /* const user=Object.values(users).map(user=>Object.values(user)).find(user=>user.includes(userPassword)&&user.includes(userId));
-    user?dispatch(setAuthedUser(userId,userPassword,user,true)):console.log("Invalid user or password");
-*/
   };
 
   return (
@@ -48,11 +46,12 @@ const App = ({ authedUser, users }) => {
         </div>
       ) : (
         <Fragment>
+          
           <Routes>
             {!authedUser.authenticated ? (
               <Route exact path="/" element={<Signin userSetUp={userSetUp} />} />
             ) : (
-              <Route exact path="/" element={<Dashboard user={authedUser.user} />} />
+              <Route exact path="/" element={<Dashboard />} />
             )}
           </Routes>
         </Fragment>

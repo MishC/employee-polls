@@ -1,0 +1,32 @@
+/* styles.css (or any other CSS file you are using) */
+
+.Nav {
+    display: flex;
+    justify-content: space-between; /* Align items at start and end */
+    background-color: teal; /* Dark background color */
+    padding: 10px 50px; /* Padding around the Nav */
+    font-size:18px;
+  }
+  
+  .Nav ul {
+    display: flex;
+    list-style-type: none; /* Remove default list styles */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .Nav li {
+    margin-right: 20px; /* Space between list items */
+  }
+  
+  .Nav li a {
+    text-decoration: none;
+    color: white; /* White text color */
+    padding: 10px; /* Padding inside each list item */
+    transition: font-weight 0.3s ease-in-out; /* Smooth transition for font weight */
+  }
+  
+  .Nav li a:hover {
+    font-weight: bold; /* Bold font weight on hover */
+  }
+  

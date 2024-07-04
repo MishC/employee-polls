@@ -9,7 +9,7 @@ import {
   
 export async function getUsers() {
     const users = await _getUsers();
-    return Object.values(Object.values(users));
+    return users;
   }
   
   export async function getInitialData () {
