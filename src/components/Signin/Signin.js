@@ -10,9 +10,10 @@ function Signin({ userSetUp }) {
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
-    if (id.current && password.current) {
-      userSetUp(id.current.value, password.current.value);
-    }
+    
+   id.current && password.current?
+      userSetUp(id.current.value, password.current.value):setError("Try again!")
+   
   };
 
   return (
@@ -24,14 +25,12 @@ function Signin({ userSetUp }) {
             ref={id}
             className="signin-input"
             placeholder="Enter your ID"
-            autocomplete="users-id" 
           />
           <input
             type="password"
             ref={password}
             className="signin-input"
             placeholder="Enter your password"
-            autocomplete="off" 
           />
         </div>
         <button type="submit" className="signin-button">Submit</button>

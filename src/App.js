@@ -6,12 +6,14 @@ import { BeatLoader } from 'react-spinners';
 import Nav from './components/Nav/Nav';
 import Signin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard';
-import { getAllUsers } from './actions/shared';
+import { authenticate, getAllUsers } from './actions/shared';
 import { setAuthedUser } from './actions/authedUser';
 
 const App = ({ authedUser, users }) => {
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const [loginerror,SetLoginerror]=useState('');
+
   const dispatch = useDispatch();
 
   const loading = useSelector((state) => state.loading);
@@ -21,18 +23,12 @@ const App = ({ authedUser, users }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (userId && userPassword) {
-        const user = Object.values(users).map(user => Object.values(user)).find(user => user.includes(userPassword) && user.includes(userId));
-        if (user) {
-            dispatch(setAuthedUser(userId, userPassword, users[userId], true));
-        } else {
-            console.log("Invalid user or password");
-        }
-    }
-}, [userId, userPassword]);
+   if (userId&&userPassword){
+   
+   dispatch(authenticate(userId,userPassword,users,true))}
+}, [userId, userPassword,dispatch]);
 
   const userSetUp = (id, password) => {
-
     setUserId(id);
     setUserPassword(password);
    
@@ -49,7 +45,7 @@ const App = ({ authedUser, users }) => {
           
           <Routes>
             {!authedUser.authenticated ? (
-              <Route exact path="/" element={<Signin userSetUp={userSetUp} />} />
+              <Route exact path="/" element={<Signin userSetUp={userSetUp}  />} />
             ) : (
               <Route exact path="/" element={<Dashboard />} />
             )}

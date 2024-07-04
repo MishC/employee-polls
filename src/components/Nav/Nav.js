@@ -3,12 +3,11 @@ import "./Nav.css";
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { clearAuthedUser } from '../../actions/authedUser'; // Import your action
+import { clearAuthedUser } from '../../actions/authedUser';
 
 const Nav = ({ authenticated, clearAuthedUser }) => {
   const handleLogout = () => {
-    clearAuthedUser(); // Dispatch action to clear authenticated user
-  };
+    clearAuthedUser(); window.location.reload();}
 
   return (
     <nav className="Nav
