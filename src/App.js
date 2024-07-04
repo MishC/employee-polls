@@ -7,7 +7,6 @@ import Nav from './components/Nav/Nav';
 import Signin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard';
 import { authenticate, getAllUsers } from './actions/shared';
-import { setAuthedUser } from './actions/authedUser';
 
 const App = ({ authedUser, users }) => {
   const [userId, setUserId] = useState('');
