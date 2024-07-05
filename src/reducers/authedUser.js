@@ -9,7 +9,7 @@ const initialState = {
     authenticated:false
   };
   
-  function authReducer(state = initialState, action) {
+  function authReducer(state = {}, action) {
     switch (action.type) {
       case SET_AUTHED_USER:
         return {

@@ -2,16 +2,19 @@
 
 .Nav {
     display: flex;
-    justify-content: space-between; /* Align items at start and end */
+    justify-content: space-between; 
+    justify-items:center;
     background-color: teal; /* Dark background color */
-    padding: 10px 50px; /* Padding around the Nav */
-    font-size:18px;
+    padding: 10px 40px; /* Padding around the Nav */
+    font-size:20px;
+    margin:0 0 30px 0;
+    
   }
   
   .Nav ul {
     display: flex;
     list-style-type: none; /* Remove default list styles */
-    margin: 0;
+    margin: 10px 0;
     padding: 0;
   }
   
