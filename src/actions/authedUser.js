@@ -2,12 +2,11 @@
 export const SET_AUTHED_USER = "SET_AUTHED_USER";
 export const CLEAR_AUTHED_USER="CLEAR_AUTHED_USER";
 
-export function setAuthedUser(id,password,user=[], authenticated=false) {
+export function setAuthedUser(id,password, authenticated=false) {
   return {
     type: SET_AUTHED_USER,
     payload:{id,
     password,
-    user,
     authenticated}
   }}
 

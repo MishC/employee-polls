@@ -6,9 +6,9 @@ import { BeatLoader, CircleLoader,ClimbingBoxLoader } from 'react-spinners';
 import Nav from './components/Nav/Nav';
 import Signin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard/Dashboard';
-import { authenticate, getAllUsers } from './actions/shared';
+import { authenticate, getUserById,getAllUsers } from './actions/shared';
 
-const App = ({ authedUser, users }) => {
+const App = ({ authedUser, user }) => {
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [loginerror,SetLoginerror]=useState('');
@@ -17,15 +17,17 @@ const App = ({ authedUser, users }) => {
 
   const loading = useSelector((state) => state.loading);
 
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(getAllUsers());
-  }, [dispatch]);
+  }, [dispatch]);*/
 
   useEffect(() => {
-   if (userId&&userPassword&&users){
-   
-   dispatch(authenticate(userId,userPassword,users,true))}
-}, [userId, userPassword,users,dispatch]);
+   if (userId&&userPassword){
+    
+       dispatch(getUserById(userId));
+   //user?dispatch(authenticate(userId,userPassword,user,true)):console.log("Fail to autheticate!")
+  }
+}, [userId, userPassword,dispatch]);
 
   const userSetUp = (id, password) => {
     setUserId(id);
@@ -69,11 +71,10 @@ const App = ({ authedUser, users }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, loading, users}) => ({
+const mapStateToProps = ({ authedUser, loading, user}) => ({
   authedUser,
   authenticated: authedUser.authenticated,
-  user:authedUser.user,
-  users,
+  user,
   loading,
 });
 

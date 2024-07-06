@@ -1,7 +1,7 @@
 import Table from "../Table/Table";
 import { connect } from "react-redux";
 
-const Unanswered = (unanswered) => {
+const Unanswered = () => {
     return <Table/>;
 }
 

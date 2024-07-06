@@ -16,7 +16,6 @@ const initialState = {
           ...state,
           id: action.payload.id,
           password: action.payload.password,
-          user:action.payload.user,
           authenticated:action.payload.authenticated
 
         };
