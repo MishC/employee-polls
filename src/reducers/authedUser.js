@@ -4,9 +4,7 @@ import { CLEAR_AUTHED_USER } from '../actions/authedUser';
 
 const initialState = {
     id: null,
-    password: "",
-    user:[],
-    authenticated:false
+  
   };
   
   function authReducer(state = {}, action) {
@@ -15,8 +13,7 @@ const initialState = {
         return {
           ...state,
           id: action.payload.id,
-          password: action.payload.password,
-          authenticated:action.payload.authenticated
+         
 
         };
      case CLEAR_AUTHED_USER:

@@ -6,8 +6,7 @@ export function setAuthedUser(id,password, authenticated=false) {
   return {
     type: SET_AUTHED_USER,
     payload:{id,
-    password,
-    authenticated}
+   }
   }}
 
   export function clearAuthedUser() {

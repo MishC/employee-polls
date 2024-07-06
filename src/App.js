@@ -6,7 +6,8 @@ import { BeatLoader, CircleLoader,ClimbingBoxLoader } from 'react-spinners';
 import Nav from './components/Nav/Nav';
 import Signin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard/Dashboard';
-import { authenticate, getUserById,getAllUsers } from './actions/shared';
+import { authenticate, getAllUsers } from './actions/shared';
+import { setAuthedUser } from './actions/authedUser';
 
 const App = ({ authedUser, user }) => {
   const [userId, setUserId] = useState('');
@@ -24,8 +25,7 @@ const App = ({ authedUser, user }) => {
   useEffect(() => {
    if (userId&&userPassword){
     
-       dispatch(getUserById(userId));
-   //user?dispatch(authenticate(userId,userPassword,user,true)):console.log("Fail to autheticate!")
+       dispatch(authenticate(userId,userPassword));
   }
 }, [userId, userPassword,dispatch]);
 
@@ -36,7 +36,7 @@ const App = ({ authedUser, user }) => {
   };
 
   const generateLoader = () => {
-    const randomNum = Math.floor(Math.random() * 3) + 1;
+    const randomNum = Math.floor(Math.random() * 2) + 1;
   
     switch (randomNum) {
       case 1:
@@ -44,7 +44,7 @@ const App = ({ authedUser, user }) => {
       case 2:
         return <CircleLoader size="50px" />;
       case 3:
-        return <ClimbingBoxLoader size="50px" />;
+        return <ClimbingBoxLoader size="50px" color="teal"/>;
       default:
         return null;
     }
@@ -57,7 +57,7 @@ const App = ({ authedUser, user }) => {
         <Fragment>
           
           <Routes>
-            {!authedUser.authenticated ? (
+            {!authedUser.id ? (
               <Route exact path="/" element={<Signin userSetUp={userSetUp}  />} />
             ) : (
               <Route path="/*" element={<Dashboard />} />
@@ -71,9 +71,8 @@ const App = ({ authedUser, user }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, loading, user}) => ({
+const mapStateToProps = ({ authedUser,  user,loading,}) => ({
   authedUser,
-  authenticated: authedUser.authenticated,
   user,
   loading,
 });
