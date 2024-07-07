@@ -1,8 +1,8 @@
+import "./Table.css";
 const Table=({})=>{
 
     return ( 
     <div className="Table">
-    <h1>Answered Polls</h1>
     <table>
         <thead>
             <tr>

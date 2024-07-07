@@ -26,10 +26,10 @@
     text-decoration: none;
     color: white; /* White text color */
     padding: 10px; /* Padding inside each list item */
-    transition: font-weight 0.3s ease-in-out; /* Smooth transition for font weight */
+    transition: font-weight 0.1s ease-in-out; /* Smooth transition for font weight */
   }
   
   .Nav li a:hover {
-    font-weight: bold; /* Bold font weight on hover */
+    font-weight: 550; /* Bold font weight on hover */
   }
   

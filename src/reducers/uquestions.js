@@ -1,4 +1,4 @@
-import { RECEIVE_QUESTIONS } from "../actions/questions";
+import { RECEIVE_QUESTIONS } from "../actions/uquestions";
 import { ADD_QUESTION } from "../actions/question";
 
 export default function receiveQuestions(state = {}, action) {
@@ -6,7 +6,7 @@ export default function receiveQuestions(state = {}, action) {
     case RECEIVE_QUESTIONS:
       return {
         ...state,
-        ...action.questions,
+        ...action.uquestions,
       };
       case ADD_QUESTION:
       const { question  } = action;

@@ -13,40 +13,30 @@ import { getAllQuestions } from "../../actions/shared";
 
 
 
-const Dashboard=({authedUser,user,dispatch})=> {
-    const {id,name} =user;
+const Dashboard=({user,dispatch})=> {
     const [avatar,setAvatar]=useState('');
     const [answered, setAnswered]=useState(false);
+    const {name,id} = user;
+    
+    const setAnswer =(answer)=>{setAnswered(answer)};
 
-    /*useEffect(() => {
-      dispatch(getAllQuestions())
-    }, [dispatch]);*/
-
-    const setAnswer =(answer)=>{setAnswered(answer);};
-  
-    return (
+  return (
         <div className="Dashboard">
         <Nav/>
-        {authedUser?
+       
       <div className="dashboard-container">
         
         
-         <img src={`/images/${id}.png`} alt={`${name}'s avatar`} width={200}/>}
+         <img src={`/images/${id}.png`} alt={`${name}'s avatar`} width={200}/>
         <h1>Welcome, {name}! </h1>
-           <InnitialButtons/> 
-         <Routes>
-          {!answered?
-          <Route path="/unanswered" element={<Unanswered />} />:
-          <Route path="/answered" element={<Answered />} />}
-        </Routes>
-      </div>:  <Fragment>    <Link>You are not signed in!</Link></Fragment>}
+    <InnitialButtons setAnswer={setAnswer}/>   
+          {answered?<Answered /> :<Unanswered /> }
+      </div>
 
-    </div>);
+    </div>)
   }
-  const mapStateToProps = ({ authedUser,user}) => ({
-    authedUser: authedUser,
-    user:user
-   // users:users[id]
+  const mapStateToProps = ({user}) => ({
+    user
     
   });
   

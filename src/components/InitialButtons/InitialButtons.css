@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     align-items: baseline;
-    height: 100vh;
     margin: 50px auto;
     font-family: Arial, sans-serif;
 }
@@ -14,9 +13,10 @@
 }
 
 .round-button {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
+    width:fit-content;
+    padding:20px;
+
+    border-radius: 5%;
     border: none;
     color: white;
     font-size: 20px;

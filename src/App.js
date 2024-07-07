@@ -3,11 +3,10 @@ import { useState, useEffect, Fragment } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { BeatLoader, CircleLoader,ClimbingBoxLoader } from 'react-spinners';
-import Nav from './components/Nav/Nav';
+//import Nav from './components/Nav/Nav';
 import Signin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard/Dashboard';
-import { authenticate, getAllUsers } from './actions/shared';
-import { setAuthedUser } from './actions/authedUser';
+import { authenticate } from './actions/shared';
 
 const App = ({ authedUser, user }) => {
   const [userId, setUserId] = useState('');
@@ -18,16 +17,17 @@ const App = ({ authedUser, user }) => {
 
   const loading = useSelector((state) => state.loading);
 
-  /*useEffect(() => {
-    dispatch(getAllUsers());
-  }, [dispatch]);*/
+
 
   useEffect(() => {
    if (userId&&userPassword){
     
        dispatch(authenticate(userId,userPassword));
+      
+
   }
-}, [userId, userPassword,dispatch]);
+}, [userId, userPassword]);
+
 
   const userSetUp = (id, password) => {
     setUserId(id);
@@ -71,7 +71,7 @@ const App = ({ authedUser, user }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser,  user,loading,}) => ({
+const mapStateToProps = ({ authedUser, user,loading,}) => ({
   authedUser,
   user,
   loading,

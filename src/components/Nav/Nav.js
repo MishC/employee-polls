@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearAuthedUser } from '../../actions/authedUser';
 
-const Nav = ({ authenticated, clearAuthedUser }) => {
+const Nav = ({user}) => {
   const handleLogout = () => {
-    clearAuthedUser(); window.location.reload();}
+    clearAuthedUser(); 
+    window.location.reload();
+  }
 
   return (
     <nav className="Nav
@@ -16,8 +18,8 @@ const Nav = ({ authenticated, clearAuthedUser }) => {
         <li><Link to="/">Home</Link></li>
       </ul>
       <ul>
-        {authenticated
-          ? <li><Link to="/" onClick={handleLogout}>Log Out</Link></li>
+        {user?
+        <li><Link to="/" onClick={handleLogout}>Log Out</Link></li>
           : null
         }
       </ul>
@@ -25,9 +27,8 @@ const Nav = ({ authenticated, clearAuthedUser }) => {
   );
 }
 
-const mapStateToProps = ({ authedUser }) => ({
-  authenticated: authedUser.authenticated,
-});
+const mapStateToProps = ({ user }) => ({
+user});
 
 const mapDispatchToProps = {
   clearAuthedUser,
