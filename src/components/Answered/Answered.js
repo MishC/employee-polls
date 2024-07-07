@@ -13,7 +13,7 @@ const Answered = ({user,questions,dispatch}) => {
    
     return (
         <div className="Answered">
-            <h1>  Answered Questions  </h1>
+            {/*<h2>  Answered Polls  </h2>*/}
        {questions.answered&&     <Table questions={Object.values(questions.answered)}/>}
 
              </div>

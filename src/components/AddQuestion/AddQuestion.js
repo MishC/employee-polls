@@ -1,8 +1,8 @@
-// components/AddQuestion.js
-
+import "./AddQuestion.css";
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
+import Nav from '../Nav/Nav';
 import { handleAddQuestion } from '../../actions/question';
 
 const AddQuestion = ({ handleAddQuestion, author_id }) => {
@@ -14,9 +14,9 @@ const AddQuestion = ({ handleAddQuestion, author_id }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { optionOneText, optionTwoText, author_id } = questionData;
+    //const { optionOneText, optionTwoText, author_id } = questionData;
        console.log(questionData);
-    handleAddQuestion({ optionOneText, optionTwoText, author_id });
+    handleAddQuestion(questionData);
 
     setQuestionData({
       optionOneText: '',
@@ -26,8 +26,11 @@ const AddQuestion = ({ handleAddQuestion, author_id }) => {
   };
 
   return (
-    <div className="add-question">
-      <h2>Add New Question</h2>
+    <div className="AddQuestion">
+      <Nav/>
+      <h2>Would you rather...</h2>
+
+      <div className="add-input-container">
       <form onSubmit={handleSubmit}>
         <label>
           Option One:
@@ -37,6 +40,7 @@ const AddQuestion = ({ handleAddQuestion, author_id }) => {
             onChange={(e) =>
               setQuestionData({ ...questionData, optionOneText: e.target.value })
             }
+            className="add-input"
             required
           />
         </label>
@@ -48,17 +52,19 @@ const AddQuestion = ({ handleAddQuestion, author_id }) => {
             onChange={(e) =>
               setQuestionData({ ...questionData, optionTwoText: e.target.value })
             }
+             className="add-input"
             required
           />
         </label>
-       
-        <button type="submit">Add Question</button>
+       <br/>
+        <button type="submit" className="add-button">Add Question</button>
       </form>
+      </div>
     </div>
   );
 };
-const mapStateToProps=({state})=>({
-     author_id:state.authedUser.id,
+const mapStateToProps=({authedUser})=>({
+     author_id:authedUser.id,
 });
 
 export default connect(mapStateToProps, { handleAddQuestion })(AddQuestion);

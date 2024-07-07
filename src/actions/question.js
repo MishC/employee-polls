@@ -17,8 +17,8 @@ export const ADD_QUESTION = "ADD_QUESTION";
         author,
       };
   
-      return _saveQuestion(questionData)
-        .then((formattedQuestion) => dispatch(addQuestion(formattedQuestion)))
+      return saveQuestion(questionData)
+        .then((data) => dispatch(addQuestion(data)))
         .catch((error) => console.error('Error saving question:', error));
     };
   }

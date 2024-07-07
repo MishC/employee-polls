@@ -39,6 +39,6 @@ export async function getUsers() {
   }
 
   
-  export function saveQuestion (question) {
-    return _saveQuestion(question)
+  export async function saveQuestion (question) {
+   return await _saveQuestion(question);
   }

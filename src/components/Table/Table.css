@@ -7,13 +7,13 @@ body {
 }
 
 .table-container {
-    width: 80%;
+    width: 40vw;
     margin: 50px auto;
     overflow-x: auto;
 }
 
 table {
-    width: 100%;
+    width: 40vw;
     border-collapse: collapse;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -38,10 +38,15 @@ tr:hover {
     background-color: #f1f1f1;
 }
 
-@media (max-width: 600px) {
+button {padding:15px; font-size:15px; background-color:rgb(4, 132, 6, 0.8); color:#fff;font-weight:500;
+border:0;}
+
+@media (max-width: 380px) {
     table, thead, tbody, th, td, tr {
         display: block;
-        width: 100%;
+        width: 80vw;
+        text-align: center;
+        justify-content: center;
     }
     thead tr {
         display: none;
@@ -50,15 +55,13 @@ tr:hover {
         margin-bottom: 15px;
     }
     td {
-        text-align: right;
-        padding-left: 50%;
+        text-align: center;
         position: relative;
     }
     td:before {
         content: attr(data-label);
         position: absolute;
         left: 10px;
-        width: 45%;
         padding-right: 10px;
         white-space: nowrap;
         text-align: left;

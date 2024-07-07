@@ -18,11 +18,15 @@ export default function receiveQuestions(state = {}, action) {
         ...state,
         all: action.questions,
       };
-    case ADD_QUESTION:
-      return {
-        ...state,
-        [action.question.id]: action.question,
-      };
+      case ADD_QUESTION:
+        return {
+          ...state,
+          questions: {
+            ...state.questions,
+            [action.question.id]: action.question,
+          },
+          unanswered: [...state.unanswered, action.question],
+        };
     default:
       return state;
   }

@@ -9,7 +9,7 @@ const Unanswered = ({ user, questions, dispatch }) => {
 
   return (
     <div className="Unanswered">
-      <h1>Unanswered Polls</h1>
+     {/* <h2>Unanswered Polls</h2>*/}
       {questions.unanswered ? (
        
           <Table questions={questions.unanswered} />

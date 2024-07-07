@@ -1,3 +1,4 @@
+import "./Table.css";
 import { connect } from "react-redux";
 
 const Tbody = ({ questions }) => {
