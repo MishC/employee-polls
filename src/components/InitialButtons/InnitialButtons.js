@@ -15,10 +15,10 @@ const InitialButtons = ({ setAnswer,user,dispatch }) => {
 
  useEffect(() => 
    
-        {if (user) {console.log(user);
+        {if (user) {
            dispatch(getUnansweredQuestions(user));}}
         
-    , [ dispatch]);
+    , [dispatch]);
   const handleOnClick = (e,type) => {
     //e.prevent.default;
     

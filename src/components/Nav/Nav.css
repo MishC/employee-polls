@@ -13,23 +13,23 @@
   
   .Nav ul {
     display: flex;
-    list-style-type: none; /* Remove default list styles */
+    list-style-type: none; 
     margin: 10px 0;
     padding: 0;
   }
   
   .Nav li {
-    margin-right: 20px; /* Space between list items */
+    margin-right: 20px; 
   }
   
   .Nav li a {
     text-decoration: none;
-    color: white; /* White text color */
-    padding: 10px; /* Padding inside each list item */
-    transition: font-weight 0.1s ease-in-out; /* Smooth transition for font weight */
+    color: white; 
+    padding: 10px; 
+    text-decoration: font-style 0.1s ease-in-out; 
   }
   
   .Nav li a:hover {
-    font-weight: 550; /* Bold font weight on hover */
+    text-decoration: underline; /* Bold font weight on hover */
   }
   
