@@ -9,10 +9,11 @@ import Answered from "../Answered/Answered";
 const InitialButtons = ({ setAnswer }) => {
   const unanswered = useRef(null);
   const answered = useRef(null);
-  const [isAnswered, setIsAnswered] = useState(false);
+  //const [isAnswered, setIsAnswered] = useState(false);
+
 
   const handleOnClick = (e,type) => {
-    e.prevent.default;
+    //e.prevent.default;
     if (type === "unanswered") {
       setAnswer(false); 
     } else if (type === "answered") {
@@ -24,9 +25,9 @@ const InitialButtons = ({ setAnswer }) => {
     <div className="InitialButtons">
       <div className="button-container link-style">
         
-          <button className="round-button red-button" onClick={handleOnClick(e,"unanswered")}>Unanswered Polls</button>
+          <button className="round-button red-button" onClick={(e)=>handleOnClick(e,"unanswered")}>Unanswered Polls</button>
        
-          <button className="round-button green-button" onClick={handleOnClick(e,"answered")}>Answered Polls</button>
+          <button className="round-button green-button" onClick={(e)=>handleOnClick(e,"answered")}>Answered Polls</button>
 
       </div>
     
