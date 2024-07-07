@@ -1,6 +1,6 @@
 
-const Leaderboard = (Leaderboard) => {
-    return { };
+const Leaderboard = () => {
+    return (<div className="Leaderboard"></div>);
 }
 
 export default Leaderboard;

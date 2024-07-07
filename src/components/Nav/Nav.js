@@ -16,7 +16,8 @@ const Nav = ({user}) => {
     ">
       <ul>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/">Leaderboard</Link></li>
+        <li><Link to="/leaderboard">Leaderboard</Link></li>
+       <li><Link to="/add">Add Poll</Link></li>
       </ul>
       <ul>
         {user?

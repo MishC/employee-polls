@@ -8,7 +8,6 @@ import Signin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard/Dashboard';
 import { authenticate } from './actions/shared';
 import QuestionDetail from './components/QuestionDetail.js/QuestionDetail';
-import { getUnansweredQuestions } from './actions/shared';
 import Leaderboard from './components/Leaderboard/Leaderboard';
 import AddQuestion from './components/AddQuestion/AddQuestion';
 const App = ({ authedUser, user }) => {

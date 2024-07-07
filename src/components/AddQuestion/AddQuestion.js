@@ -5,25 +5,23 @@ import { connect } from 'react-redux';
 
 import { handleAddQuestion } from '../../actions/question';
 
-const AddQuestion = ({ handleAddQuestion }) => {
+const AddQuestion = ({ handleAddQuestion, author_id }) => {
   const [questionData, setQuestionData] = useState({
     optionOneText: '',
     optionTwoText: '',
-    author: '',
+    author: author_id,
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { optionOneText, optionTwoText, author } = questionData;
+    const { optionOneText, optionTwoText, author_id } = questionData;
+       console.log(questionData);
+    handleAddQuestion({ optionOneText, optionTwoText, author_id });
 
-    // Call the handleAddQuestion action creator
-    handleAddQuestion({ optionOneText, optionTwoText, author });
-
-    // Reset form fields after submission
     setQuestionData({
       optionOneText: '',
       optionTwoText: '',
-      author: '',
+      author: ''
     });
   };
 
@@ -53,21 +51,14 @@ const AddQuestion = ({ handleAddQuestion }) => {
             required
           />
         </label>
-        <label>
-          Author:
-          <input
-            type="text"
-            value={questionData.author}
-            onChange={(e) =>
-              setQuestionData({ ...questionData, author: e.target.value })
-            }
-            required
-          />
-        </label>
+       
         <button type="submit">Add Question</button>
       </form>
     </div>
   );
 };
+const mapStateToProps=({state})=>({
+     author_id:state.authedUser.id,
+});
 
-export default connect(null, { handleAddQuestion })(AddQuestion);
+export default connect(mapStateToProps, { handleAddQuestion })(AddQuestion);
