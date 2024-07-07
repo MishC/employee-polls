@@ -7,6 +7,7 @@ import { getAnsweredQuestions } from "../../actions/shared";
 const Answered = ({user,questions,dispatch}) => {
     useEffect(()=>{
         if (!user){console.log("User is not defined!")}
+        
           dispatch(getAnsweredQuestions(user));
         },[user,dispatch]);
    
