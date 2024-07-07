@@ -1,4 +1,7 @@
 import "./Table.css";
+import { connect } from "react-redux";
+import Tbody from "./Tbody";
+
 const Table=({})=>{
 
     return ( 
@@ -6,25 +9,18 @@ const Table=({})=>{
     <table>
         <thead>
             <tr>
-                <th>Questions</th>
                 <th>Created by</th>
                 <th>Date</th>
                 <th>See details</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-            </tr>
-            
-        </tbody>
+        <Tbody/>
     </table>
     </div>
 )
 }
 
-export default Table;
+const mapStateToProps = ({ uquestions}) => ({
+    uquestions
+  });
+export default connect(mapStateToProps)(Table);

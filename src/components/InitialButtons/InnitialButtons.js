@@ -11,14 +11,12 @@ const InitialButtons = ({ setAnswer }) => {
   const answered = useRef(null);
   const [isAnswered, setIsAnswered] = useState(false);
 
-  const handleOnClick = (type) => {
-    //e.prevent.default;
+  const handleOnClick = (e,type) => {
+    e.prevent.default;
     if (type === "unanswered") {
-     // setIsAnswered(false);
-      setAnswer(false); // Call the parent callback if needed
+      setAnswer(false); 
     } else if (type === "answered") {
-      //setIsAnswered(true);
-      setAnswer(true); // Call the parent callback if needed
+      setAnswer(true); 
     }
   };
 
@@ -26,9 +24,9 @@ const InitialButtons = ({ setAnswer }) => {
     <div className="InitialButtons">
       <div className="button-container link-style">
         
-          <button className="round-button red-button" onClick={()=>handleOnClick("unanswered")}>Unanswered Polls</button>
+          <button className="round-button red-button" onClick={handleOnClick(e,"unanswered")}>Unanswered Polls</button>
        
-          <button className="round-button green-button" onClick={()=>handleOnClick("answered")}>Answered Polls</button>
+          <button className="round-button green-button" onClick={handleOnClick(e,"answered")}>Answered Polls</button>
 
       </div>
     
