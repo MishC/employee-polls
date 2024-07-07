@@ -40,7 +40,6 @@ export function getUnansweredQuestions(user) {
     try {
       const ques = await getQuestions(); // Assuming getQuestions fetches all questions
       const uQuestions = Object.values(ques).filter(q => !answeredIds.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp);
-      console.log(uQuestions);
 
       dispatch(receiveUQuestions(uQuestions));
     } catch (error) {
