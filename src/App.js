@@ -10,6 +10,7 @@ import { authenticate } from './actions/shared';
 import QuestionDetail from './components/QuestionDetail.js/QuestionDetail';
 import { getUnansweredQuestions } from './actions/shared';
 import Leaderboard from './components/Leaderboard/Leaderboard';
+import AddQuestion from './components/AddQuestion/AddQuestion';
 const App = ({ authedUser, user }) => {
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -70,6 +71,8 @@ const App = ({ authedUser, user }) => {
             )}
                     <Route path="questions/:question_id" element={<QuestionDetail />} />
                     <Route path="/leaderboard" element={<Leaderboard />} />
+                    <Route path="/add" element={<AddQuestion />} />
+
 
 
           </Routes>
