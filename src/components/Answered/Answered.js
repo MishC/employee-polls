@@ -1,22 +1,27 @@
 
+import Table from "../Table/Table";
 import { connect } from "react-redux";
-import { useState, Fragment } from "react";
-import { getAllQuestions } from "../../actions/shared";
-const Answered = (Answered) => {
+import { useEffect } from "react";
+import { getAnsweredQuestions } from "../../actions/shared";
 
+const Answered = ({user,questions,dispatch}) => {
+    useEffect(()=>{
+        if (!user){console.log("User is not defined!")}
+          dispatch(getAnsweredQuestions(user));
+        },[user,dispatch]);
    
     return (
         <div className="Answered">
             <h1>  Answered Questions  </h1>
+       {questions.answered&&     <Table questions={Object.values(questions.answered)}/>}
 
              </div>
     )
 }
-const mapStateToProps = ({ authedUser, questions}) => ({
+const mapStateToProps = ({ user,questions}) => ({
+    user,
+    questions
     
-    user:authedUser.user,
-    answers:authedUser.user.answers,
-    questions,
 
   });
 export default connect(mapStateToProps)(Answered);

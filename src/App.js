@@ -7,7 +7,7 @@ import { BeatLoader, CircleLoader,ClimbingBoxLoader } from 'react-spinners';
 import Signin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard/Dashboard';
 import { authenticate } from './actions/shared';
-
+import { getUnansweredQuestions } from './actions/shared';
 const App = ({ authedUser, user }) => {
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -23,10 +23,12 @@ const App = ({ authedUser, user }) => {
    if (userId&&userPassword){
     
        dispatch(authenticate(userId,userPassword));
+
       
 
   }
 }, [userId, userPassword]);
+
 
 
   const userSetUp = (id, password) => {

@@ -1,29 +1,29 @@
 import "./Uanswered.css";
-import { useEffect,Fragment } from "react";
-
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import Table from "../Table/Table";
 import { getUnansweredQuestions } from "../../actions/shared";
 
-const Unanswered = ({user,dispatch}) => {
-   const {id}=user;
-   
-useEffect(()=>{
-    if (!user){console.log("User is not defined!")}
-      dispatch(getUnansweredQuestions(user));
-    },[]);
-    return (
-    <div className="Unanswered">
-    <h1>  Unanswered Polls  </h1>
+const Unanswered = ({ user, questions, dispatch }) => {
+  
 
-    <Table/>
+  return (
+    <div className="Unanswered">
+      <h1>Unanswered Polls</h1>
+      {questions.unanswered ? (
+       
+          <Table questions={questions.unanswered} />
+         
+      ) : (
+        ""
+      )}
     </div>
-    
-)
-}
-const mapStateToProps = ({user}) => ({
-    user,
-    id:user.id,
-  });
+  );
+};
+
+const mapStateToProps = (state) => ({
+  user: state.authedUser.user,
+  questions: state.questions,
+});
 
 export default connect(mapStateToProps)(Unanswered);

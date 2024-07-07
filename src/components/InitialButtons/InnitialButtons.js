@@ -5,19 +5,31 @@ import { useState, useRef } from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import Unanswered from "../Unanswered/Unanswered";
 import Answered from "../Answered/Answered";
+import { useEffect } from "react";
+import { getUnansweredQuestions } from "../../actions/shared";
 
-const InitialButtons = ({ setAnswer }) => {
+const InitialButtons = ({ setAnswer,user,dispatch }) => {
   const unanswered = useRef(null);
   const answered = useRef(null);
-  //const [isAnswered, setIsAnswered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
-
+ useEffect(() => 
+   
+        {if (user) {console.log(user);
+           dispatch(getUnansweredQuestions(user));}}
+        
+    , [ dispatch]);
   const handleOnClick = (e,type) => {
     //e.prevent.default;
+    
     if (type === "unanswered") {
       setAnswer(false); 
+      setIsClicked(false);
+     
     } else if (type === "answered") {
       setAnswer(true); 
+      setIsClicked(true);
+
     }
   };
 
@@ -25,9 +37,9 @@ const InitialButtons = ({ setAnswer }) => {
     <div className="InitialButtons">
       <div className="button-container link-style">
         
-          <button className="round-button red-button" onClick={(e)=>handleOnClick(e,"unanswered")}>Unanswered Polls</button>
+          <button className={`round-button red-button ${isClicked ? "" : "active"}`} onClick={(e)=>handleOnClick(e,"unanswered")}>Unanswered Polls</button>
        
-          <button className="round-button green-button" onClick={(e)=>handleOnClick(e,"answered")}>Answered Polls</button>
+          <button className={`round-button green-button ${isClicked ?  "active":""}`} onClick={(e)=>handleOnClick(e,"answered")}>Answered Polls</button>
 
       </div>
     
@@ -36,6 +48,6 @@ const InitialButtons = ({ setAnswer }) => {
   );
 };
 
-const mapStateToProps = ({ }) => ({});
+const mapStateToProps = ({ user}) => ({user});
 
 export default connect(mapStateToProps)(InitialButtons);

@@ -9,7 +9,7 @@ import Nav from "../Nav/Nav";
 import InnitialButtons from "../InitialButtons/InnitialButtons";
 import Unanswered from "../Unanswered/Unanswered";
 import Answered from "../Answered/Answered";
-import { getAllQuestions } from "../../actions/shared";
+    import { getUnansweredQuestions } from "../../actions/shared";
 
 
 
@@ -19,7 +19,7 @@ const Dashboard=({user,dispatch})=> {
     const {name,id} = user;
     
     const setAnswer =(answer)=>{setAnswered(answer)};
-
+    
   return (
         <div className="Dashboard">
         <Nav/>
@@ -30,13 +30,13 @@ const Dashboard=({user,dispatch})=> {
          <img src={`/images/${id}.png`} alt={`${name}'s avatar`} width={200}/>
         <h1>Welcome, {name}! </h1>
     <InnitialButtons setAnswer={setAnswer}/>   
-          {answered?<Answered /> :<Unanswered /> }
+         {answered&&user.id?<Answered /> :<Unanswered />}
       </div>
 
     </div>)
   }
   const mapStateToProps = ({user}) => ({
-    user
+    user:user
     
   });
   

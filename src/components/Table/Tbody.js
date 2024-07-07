@@ -1,19 +1,23 @@
 import { connect } from "react-redux";
 
-const Tbody = ({uquestions}) => {
-    return (<tbody>
-        {Object.values(uquestions).map((item,id)=>
-        <tr>
+const Tbody = ({ questions }) => {
+
+  return (
+    <tbody>
+      {questions.map((item, id) => {
+        const date = new Date(item.timestamp);
+        return (
+          <tr key={id}>
             <td>{item.author}</td>
-            <td>{item.timestamp}</td>
-            <td><button>See More</button></td>
+            <td>{date.toLocaleString('no')}</td>
+            <td>
+              <button>See More</button>
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  );
+};
 
-        </tr>)}
-        
-    </tbody>);
-}
-
-const mapStateToProps = ({ uquestions}) => ({
-    uquestions
-  });
-export default connect(mapStateToProps)(Tbody);
+export default Tbody;

@@ -2,8 +2,8 @@ import { getUsers, getInitialData, getQuestions} from "../backend/api";
 import { receiveUser } from "./user";
 import { startLoading, stopLoading } from "./loading";
 import { setAuthedUser } from "./authedUser";
-import { receiveQuestions } from "./uquestions";
-
+import { receiveQuestions,receiveAQuestions,receiveUQuestions } from "./questions";
+//import { receiveUQuestions } from "./uquestions";
 
 export function authenticate(id,password){
     return async (dispatch) => {
@@ -15,7 +15,7 @@ export function authenticate(id,password){
      if (user) {
      dispatch(setAuthedUser(id));
      dispatch(receiveUser(users[id]));
-     setTimeout(()=>dispatch(stopLoading()),500)
+     dispatch(stopLoading());
      return user
      }
      else {console.log("User(s) are not found"); dispatch(stopLoading());}
@@ -27,28 +27,51 @@ export function authenticate(id,password){
 }}
 
 
-export function getUnansweredQuestions(user){
+export function getUnansweredQuestions(user) {
   return async (dispatch) => {
-    if (!user){console.error("User is not received")};
+    if (!user.answers) {
+      console.error("User is not received");
+      return;
+    }
 
-   const {answers,questions}=user;
-   const answers_=Object.keys(answers);
-   const arr=[...new Set([...answers_, ...questions])];
-   
+    const { answers } = user;
+    const answeredIds = Object.keys(answers);
+    
     try {
-      const ques = await getQuestions();
-      const uQuestions = Object.values(ques).filter(q=>!arr.includes(q.id));
-     
-      dispatch(receiveQuestions(uQuestions));
- 
-      return uQuestions;
+      const ques = await getQuestions(); // Assuming getQuestions fetches all questions
+      const uQuestions = Object.values(ques).filter(q => !answeredIds.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp);
+      console.log(uQuestions);
+
+      dispatch(receiveUQuestions(uQuestions));
     } catch (error) {
       console.error("Failed to fetch questions:", error);
-      dispatch(stopLoading());
       throw error;
     }
-  };}
+  };
+}
+ 
+  export function getAnsweredQuestions(user){
+    return async (dispatch) => {
+      if (!user){console.error("User is not received");return};
+  
+     const {answers}=user;
+     const arr=Object.keys(answers);
+    
      
+      try {
+        const ques = await getQuestions();
+        const aQuestions = Object.values(ques).filter(q=>arr.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp);
+       
+        await dispatch(receiveAQuestions(aQuestions));
+   
+        return aQuestions;
+      } catch (error) {
+        console.error("Failed to fetch questions:", error);
+        dispatch(stopLoading());
+        throw error;
+      }
+    };}
+       
 
 
 
@@ -58,8 +81,8 @@ export function getAllUsers() {
   
       try {
         const users = await getUsers();
-        dispatch(receiveUser(users));
-        setTimeout(()=> dispatch(stopLoading()),500)
+        dispatch(receiveUser(users)).sort((a, b) => b.timestamp - a.timestamp);
+        dispatch(stopLoading());
         return users;
       } catch (error) {
         console.error("Failed to fetch users:", error);
