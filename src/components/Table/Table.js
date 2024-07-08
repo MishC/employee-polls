@@ -2,7 +2,7 @@ import "./Table.css";
 import { connect } from "react-redux";
 import Tbody from "./Tbody";
 
-const Table=(props)=>{
+const Table=({questions,answered})=>{
 
     return ( 
     <div className="Table">
@@ -11,10 +11,10 @@ const Table=(props)=>{
             <tr>
                 <th>Created by</th>
                 <th>Date</th>
-                <th>See details</th>
+                <th>{answered?`See details`:`Vote`}</th>
             </tr>
         </thead>
-        <Tbody questions={props.questions}/>
+        <Tbody questions={questions} answered={answered}/>
     </table>
     </div>
 )
