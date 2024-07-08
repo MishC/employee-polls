@@ -1,4 +1,3 @@
-
 export const RECEIVE_USER = "RECEIVE_USER";
 
 export function receiveUser(user) {
@@ -7,5 +6,3 @@ export function receiveUser(user) {
     user,
   };
 }
-
-
