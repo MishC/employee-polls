@@ -36,7 +36,7 @@ const AddQuestion = ({ handleAddQuestion, author_id }) => {
       <div className="add-input-container">
       <form onSubmit={handleSubmit}>
         <label>
-          Option One:
+          Option A:
           <input
             type="text"
             value={questionData.optionOneText}
@@ -48,7 +48,7 @@ const AddQuestion = ({ handleAddQuestion, author_id }) => {
           />
         </label>
         <label>
-          Option Two:
+          Option B:
           <input
             type="text"
             value={questionData.optionTwoText}

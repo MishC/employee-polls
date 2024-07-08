@@ -31,12 +31,13 @@ const QuestionDetail = ({ questions,user }) => {
       <h1>Would you rather...</h1>      
       <h5>Question by: {question.author} on {new Date(question.timestamp).toLocaleString()}</h5>
 
-      <ol className="question-option">
+      <ol type="A" className="question-option">
         <li><h4> {capitalizeFirstLetter(question.optionOne.text)}</h4></li>
         <li><h4> {capitalizeFirstLetter(question.optionTwo.text)} </h4></li>
       
       </ol>
-      { !Object.keys(user.answers).includes(question_id)?<Vote/>:
+      { !Object.keys(user.answers)
+      .includes(question_id)?<Vote/>:
      <Results question={question}/>}
 
       <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>

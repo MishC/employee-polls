@@ -6,7 +6,7 @@ const Results = ({ question }) => {
     if (question) {
       const trace1 = {
         type: 'bar',
-        x: ["Option 1", "Option 2"],
+        x: ["Option A", "Option B"],
         y: [question.optionOne.votes.length, question.optionTwo.votes.length],
         text: [`<br> <br>Votes: ${question.optionOne.votes.length}<br>${question.optionOne.votes.join(', ')}`, 
           `<br> <br>Votes: ${question.optionTwo.votes.length}<br><br>${question.optionTwo.votes.join(', <br>')}`],
