@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
 import {Routes,Route} from "react-router-dom";
 
-import Nav from "../Nav/Nav";
 import InnitialButtons from "../InitialButtons/InnitialButtons";
 import Unanswered from "../Unanswered/Unanswered";
 import Answered from "../Answered/Answered";
@@ -22,7 +21,6 @@ const Dashboard=({user,dispatch})=> {
     
   return (
         <div className="Dashboard">
-        <Nav/>
        
       <div className="dashboard-container">
         
