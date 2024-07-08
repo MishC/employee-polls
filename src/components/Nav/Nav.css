@@ -18,16 +18,18 @@
   .Nav li {
     margin-right: 20px; 
     color:#fff;
+    
   }
   
-  .Nav li a {
+  .Nav li a, .Nav li {
     text-decoration: none;
     color: white; 
     padding: 10px; 
     text-decoration: font-style 0.1s ease-in-out; 
+    cursor:pointer;
   }
   
-  .Nav li a:hover {
+  .Nav li a:hover, .Nav li:hover {
     text-decoration: underline; /* Bold font weight on hover */
   }
   
