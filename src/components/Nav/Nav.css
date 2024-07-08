@@ -1,13 +1,10 @@
-/* styles.css (or any other CSS file you are using) */
-
 .Nav {
     display: flex;
     justify-content: space-between; 
     justify-items:center;
-    background-color: teal; /* Dark background color */
-    padding: 10px 40px; /* Padding around the Nav */
-    font-size:20px;
-    margin:0 0 30px 0;
+    background-color: var(--main-color); 
+    padding: 10px 40px; 
+    margin:0;
     
   }
   
@@ -20,6 +17,7 @@
   
   .Nav li {
     margin-right: 20px; 
+    color:#fff;
   }
   
   .Nav li a {
