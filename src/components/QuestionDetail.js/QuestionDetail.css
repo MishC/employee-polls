@@ -1,0 +1,7 @@
+.QuestionDetail{display:flex; flex-direction: column;
+justify-content: center;align-items: center;margin: 50px auto;}
+.QuestionDetail-fail{display:flex; flex-direction: column;
+    justify-content: center;align-items: center;margin: 250px auto;}
+.QuestionDetail h1  {margin:0}
+
+.QuestionDetail li {color:blue; font-weight:600} 
