@@ -17,7 +17,7 @@ const Tbody = ({ questions,answered}) => {
             <td>{date.toLocaleDateString('no')}</td>
             <td>
             <Link to={`/questions/${item.id}`}>
-                <button>{answered?`See details`:`Vote`}</button>
+                <button className="table-button">{answered?`Details`:`Vote`}</button>
               </Link>
             </td>
           </tr>

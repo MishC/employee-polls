@@ -36,8 +36,10 @@ tr:hover {
     background-color: #f8f8f8;;
 }
 
-td button {padding:15px; font-size:15px; background-color:var(--button-green); color:#fff;font-weight:500;
+td button {width:100px; height:auto;padding:12px; border-radius: 5px; font-size:15px; background-color:var(--button-green); color:#fff;font-weight:500;
 border:0; cursor:pointer}
+
+
 
 @media (max-width: 360px) {
     table, thead, tbody, th, td, tr {
