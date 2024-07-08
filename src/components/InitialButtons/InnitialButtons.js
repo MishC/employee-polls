@@ -6,7 +6,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import Unanswered from "../Unanswered/Unanswered";
 import Answered from "../Answered/Answered";
 import { useEffect } from "react";
-import { getUnansweredQuestions } from "../../actions/shared";
+import { getUnansweredQuestions,getAnsweredQuestions } from "../../actions/shared";
 
 const InitialButtons = ({ setAnswer,user,dispatch }) => {
   const unanswered = useRef(null);
@@ -16,7 +16,7 @@ const InitialButtons = ({ setAnswer,user,dispatch }) => {
  useEffect(() => 
    
         {if (user) {
-           dispatch(getUnansweredQuestions(user));}}
+           dispatch(getUnansweredQuestions(user));dispatch(getAnsweredQuestions(user))}}
         
     , [dispatch]);
   const handleOnClick = (e,type) => {
