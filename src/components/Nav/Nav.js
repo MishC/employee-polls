@@ -1,12 +1,15 @@
 import "./Nav.css";
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearAuthedUser } from '../../actions/authedUser';
+import { Navigate } from "react-router-dom";
 
-const Nav = ({user}) => {
+const Nav = ({authedUser}) => {
+  const navigate=useNavigate();
   const handleLogout = () => {
+    navigate("/"); 
     clearAuthedUser(); 
     window.location.reload();
   }
@@ -20,17 +23,17 @@ const Nav = ({user}) => {
        <li><Link to="/add">Add Poll</Link></li>
       </ul>
       <ul>
-        {user?
-        <li><Link to="/" onClick={handleLogout}>Log Out</Link></li>
-          : null
+        {authedUser.id?
+        <li onClick={handleLogout}>Log Out</li>
+          :  <li onClick={handleLogout}>Log in</li>
         }
       </ul>
     </nav>
   );
 }
 
-const mapStateToProps = ({ user }) => ({
-user});
+const mapStateToProps = ({ authedUser }) => ({
+authedUser});
 
 const mapDispatchToProps = {
   clearAuthedUser,
