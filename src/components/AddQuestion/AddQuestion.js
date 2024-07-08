@@ -1,8 +1,8 @@
 import "./AddQuestion.css";
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import Nav from '../Nav/Nav';
 import { handleAddQuestion } from '../../actions/question';
 
 const AddQuestion = ({ handleAddQuestion, author_id }) => {
@@ -12,9 +12,10 @@ const AddQuestion = ({ handleAddQuestion, author_id }) => {
     author: author_id,
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    //const { optionOneText, optionTwoText, author_id } = questionData;
        console.log(questionData);
     handleAddQuestion(questionData);
 
@@ -23,11 +24,13 @@ const AddQuestion = ({ handleAddQuestion, author_id }) => {
       optionTwoText: '',
       author: ''
     });
+    navigate(-1);
   };
 
   return (
     <div className="AddQuestion">
-      <Nav/>
+
+
       <h2>Would you rather...</h2>
 
       <div className="add-input-container">
@@ -57,7 +60,9 @@ const AddQuestion = ({ handleAddQuestion, author_id }) => {
           />
         </label>
        <br/>
-        <button type="submit" className="add-button">Add Question</button>
+      <div> <button onClick={() => navigate(-1)} className="back-button">Back</button> 
+                       
+        <button type="submit" className="add-button">Add Question</button></div>
       </form>
       </div>
     </div>
