@@ -3,7 +3,7 @@ import { useState, useEffect, Fragment } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { BeatLoader, CircleLoader,ClimbingBoxLoader } from 'react-spinners';
-//import Nav from './components/Nav/Nav';
+import Nav from './components/Nav/Nav';
 import Signin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard/Dashboard';
 import { authenticate } from './actions/shared';
@@ -47,8 +47,7 @@ const App = ({ authedUser, user }) => {
         return <BeatLoader size="20px" />;
       case 2:
         return <CircleLoader size="50px" />;
-      case 3:
-        return <ClimbingBoxLoader size="50px" color="teal"/>;
+     
       default:
         return null;
     }
@@ -59,7 +58,7 @@ const App = ({ authedUser, user }) => {
         {generateLoader()}</div>
       ) : (
         <Fragment>
-          
+         <Nav/> 
           <Routes>
             {!authedUser.id ? (
               <Route exact path="/" element={<Signin userSetUp={userSetUp}  />} />
