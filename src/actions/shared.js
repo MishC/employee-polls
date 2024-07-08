@@ -1,4 +1,4 @@
-import { getUsers, getInitialData, getQuestions, addQuestion} from "../backend/api";
+import { getUsers, getInitialData, getQuestions, getUserById} from "../backend/api";
 import { _saveQuestion } from "../backend/_DATA";
 import { receiveUser } from "./user";
 import { startLoading, stopLoading } from "./loading";
@@ -56,8 +56,7 @@ export function getUnansweredQuestions(user) {
   
      const {answers}=user;
      const arr=Object.keys(answers);
-    
-     
+         
       try {
         const ques = await getQuestions();
         const aQuestions = Object.values(ques).filter(q=>arr.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp);
@@ -71,10 +70,26 @@ export function getUnansweredQuestions(user) {
         throw error;
       }
     };}
-       
-   
+
+   export async function getUser(id){
+    return async (dispatch) => {
+      if (!id){console.error("Id is invalid. Cannot deliver en user.");return};
+      try { 
+        
+        const user = await getUserById(id).then(user=>dispatch(receiveUser(user))).then(user=> user.name);
+
+         return user;
+
+      } catch (error) {
+        console.error("Failed to fetch user by id:", error);
+        throw error;
 
 
+      }
+   }
+  }
+
+/****************************************************************************/
 export function getAllUsers() {
     return async (dispatch) => {
       dispatch(startLoading()); 
