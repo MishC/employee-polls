@@ -1,24 +1,42 @@
+import "./QuestionDetail.css";
+
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {capitalizeFirstLetter} from "../../helper/helper.js";
+import Plotly from 'plotly.js-dist';
+import Results from "./Results.js";
+
 
 const QuestionDetail = ({ questions }) => {
+  
   const { question_id } = useParams();
-  const question = questions.all.find((q) => q.id === question_id);
 
-  if (!question) {
-    return <div>Question not found</div>;
+  if (!questions) {
+    return <div className="QuestionDetail-fail"><h2>Sorry, question not found</h2><br/>
+          <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>
+          </div>;
   }
-
+  const question=[...questions.answered, ...questions.unanswered].find(q=>q.id===question_id);
+  
   return (
-    <div>
-      <h1>{question.author}</h1>
-      <p>{new Date(question.timestamp).toLocaleString()}</p>
-      {/* Render more details as needed */}
+    <div className="QuestionDetail">
+
+      <h1>Would you rather...</h1>      
+      <h5>Question by: {question.author} on {new Date(question.timestamp).toLocaleString()}</h5>
+
+      <ol className="question-option">
+        <li><h4> {capitalizeFirstLetter(question.optionOne.text)}</h4></li>
+        <li><h4> {capitalizeFirstLetter(question.optionTwo.text)} </h4></li>
+      
+      </ol>
+     <Results question={question}/>
+
+      <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>
     </div>
   );
-};
-
+}
 const mapStateToProps = (state) => ({
   questions: state.questions,
 });
