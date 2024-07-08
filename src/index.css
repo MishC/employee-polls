@@ -23,4 +23,10 @@ code {
 }
 
 
+:root {
+--main-color: teal;
+ --main-bg-color:  rgb(243, 243, 225);
+ --button-green: rgb(4, 132, 6, 0.8);
+ --shadow-grey:#ccc;
+}
 
