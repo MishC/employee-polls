@@ -42,3 +42,7 @@ export async function getUsers() {
   export async function saveQuestion (question) {
    return await _saveQuestion(question);
   }
+
+  export async function  saveQuestionAnswer ({ authedUser, qid, answer }) {
+    return await _saveQuestionAnswer ({ authedUser, qid, answer });
+  }

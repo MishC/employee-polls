@@ -1,7 +1,18 @@
 .QuestionDetail{display:flex; flex-direction: column;
-justify-content: center;align-items: center;margin: 50px auto;}
+justify-content: left;justify-items:left; align-items:  center;margin: 50px auto;}
 .QuestionDetail-fail{display:flex; flex-direction: column;
     justify-content: center;align-items: center;margin: 250px auto;}
 .QuestionDetail h1  {margin:0}
 
 .QuestionDetail li {color:blue; font-weight:600} 
+
+.QuestionDetail .Vote {justify-self: left;}
+
+.QuestionDetail .back-button {margin-top: 60px; width:100px; position:relative;right:15px;}
+
+#results-plot {width:60vw; margin: 0 auto; display:block }
+
+@media screen and (max-width:780px) {
+    #results-plot {width:80vw;}
+    
+}

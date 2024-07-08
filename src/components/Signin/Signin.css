@@ -1,6 +1,7 @@
 .Signin {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -50,3 +51,10 @@
     margin-top: 10px;
   }
   
+  @media screen and (max-width: 480px) {
+   .signin-input-container { display:block; margin:0 auto; 
+
+
+    }
+    .signin-input {display:block}
+  }

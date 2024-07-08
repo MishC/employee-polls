@@ -39,7 +39,7 @@ tr:hover {
 td button {padding:15px; font-size:15px; background-color:var(--button-green); color:#fff;font-weight:500;
 border:0; cursor:pointer}
 
-@media (max-width: 380px) {
+@media (max-width: 360px) {
     table, thead, tbody, th, td, tr {
         display: block;
         width: 80vw;

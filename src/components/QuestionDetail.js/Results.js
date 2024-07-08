@@ -37,10 +37,10 @@ const Results = ({ question }) => {
         },
         yaxis: {
           title: {
-            text: 'Votes'},
+            text: ''},
             gridwidth: 2,
           autorange: true,
-          showgrid: true,
+          showgrid: false,
           zeroline: false,
           showline: false,
           autotick: false,
@@ -57,7 +57,7 @@ const Results = ({ question }) => {
     }
   }, [question]);
 
-  return <div id="results-plot"></div>;
+  return <div id="results-plot" className="results-plot"></div>;
 };
 
 export default Results;

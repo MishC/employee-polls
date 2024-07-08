@@ -1,14 +1,18 @@
 html {
   box-sizing: border-box;
   margin:0;
+  max-width:100vw;
 }
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+  max-width: 100vw;
 }
 body {
-  margin: auto;
+  margin: 0;
+  max-width:100vw;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
