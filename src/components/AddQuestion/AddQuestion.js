@@ -32,7 +32,7 @@ const AddQuestion = ({ handleAddQuestion, author_id }) => {
 
 
       <h2>Would you rather...</h2>
-
+       <h4>(Add options)</h4>     
       <div className="add-input-container">
       <form onSubmit={handleSubmit}>
         <label>
