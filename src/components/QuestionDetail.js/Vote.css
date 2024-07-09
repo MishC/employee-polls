@@ -84,7 +84,7 @@
       border-radius: 50%;
       background: white;
   }
+  .error {color:red}
   
-@media screen {max-width:350px
+@media screen and (max-width:350px){}
     
-}
