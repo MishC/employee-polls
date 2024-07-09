@@ -1,12 +1,11 @@
 import "./QuestionDetail.css";
 
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate,useParams  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useState } from "react";
 import {capitalizeFirstLetter} from "../../helper/helper.js";
-import Plotly from 'plotly.js-dist';
+//import Plotly from 'plotly.js-dist';
 import { Navigate } from "react-router-dom";
 import Results from "./Results.js";
 import Vote from "./Vote.js";
@@ -16,10 +15,11 @@ const QuestionDetail = ({ questions,user }) => {
   
   
   const { question_id } = useParams();
-  
+  const navigate=useNavigate();
 
-  if (!questions) {
+  if (!questions||!questions.unanswered||!questions.answered) {
     return <div className="QuestionDetail-fail"><h2>Sorry, question not found</h2><br/>
+    
           <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>
           </div>;
   }
@@ -37,7 +37,7 @@ const QuestionDetail = ({ questions,user }) => {
       
       </ol>
       { !Object.keys(user.answers)
-      .includes(question_id)?<Vote/>:
+      .includes(question_id)?<Vote question_id={question_id}/>:
      <Results question={question}/>}
 
       <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>
