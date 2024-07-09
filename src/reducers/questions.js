@@ -1,5 +1,6 @@
 import { RECEIVE_AQUESTIONS, RECEIVE_QUESTIONS, RECEIVE_UQUESTIONS } from '../actions/questions';
 import  {ADD_QUESTION} from '../actions/question';
+import {SAVE_QUESTION_ANSWER} from '../actions/saveVote';
 
 export default function receiveQuestions(state = {}, action) {
   switch (action.type) {
