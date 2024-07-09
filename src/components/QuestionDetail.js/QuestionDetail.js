@@ -19,7 +19,7 @@ const QuestionDetail = ({ questions,user }) => {
 
   if (!questions||!questions.unanswered||!questions.answered) {
     return <div className="QuestionDetail-fail"><h2>Sorry, question not found</h2><br/>
-    
+
           <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>
           </div>;
   }
@@ -37,7 +37,7 @@ const QuestionDetail = ({ questions,user }) => {
       
       </ol>
       { !Object.keys(user.answers)
-      .includes(question_id)?<Vote question_id={question_id}/>:
+      .includes(question_id)?<Vote question={question} question_id={question_id}/>:
      <Results question={question}/>}
 
       <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>

@@ -1,42 +1,21 @@
-import { SAVE_QUESTION_ANSWER } from "../actions/saveVote";
+import { SAVE_QUESTION_ANSWER } from '../actions/saveVote';
 
-// reducers/questions.js
-import { SAVE_QUESTION_ANSWER } from '../actions/actionTypes';
-
-const initialState = {
-  questions: {},
-};
-
-export default function saveVote(state = initialState, action) {
+export default function users(state = {}, action) {
   switch (action.type) {
     case SAVE_QUESTION_ANSWER:
-      const { authedUser, qid, answer } = action.payload;
+      const { authedUser, qid, answer } = action;
 
       return {
         ...state,
-        questions: {
-          ...state.questions,
-          [qid]: {
-            ...state.questions[qid],
-            [answer]: {
-              ...state.questions[qid][answer],
-              votes: state.questions[qid][answer].votes.concat(authedUser)
-            }
-          }
+        [authedUser]: {
+          ...state[authedUser],
+          answers: {
+            ...((state[authedUser] && state[authedUser].answers) || {}),
+            [qid]: answer,
+          },
+         // question:{}
         },
-        users: {
-          ...state.users,
-          [authedUser]: {
-            ...state.users[authedUser],
-            answers: {
-              ...state.users[authedUser].answers,
-              [qid]: answer
-            }
-          }
-        }
       };
-
-   
     default:
       return state;
   }

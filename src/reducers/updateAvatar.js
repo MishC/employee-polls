@@ -7,5 +7,5 @@ export default function updateAvatar(state = {}, action) {
             ...action.questions,
           };
 
-
-}
+        }
+      };

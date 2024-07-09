@@ -2,8 +2,8 @@ import { combineReducers } from "redux";
 import authedUser from "./authedUser";
 import user from "./user";
 import questions from "./questions";
-//import uquestions from "./uquestions";
 import loading from './loading';
+import saveVote from "./saveVote";
 
 
 export default combineReducers({
@@ -11,4 +11,5 @@ export default combineReducers({
   user,
   questions,
   loading,
+  saveVote
   });

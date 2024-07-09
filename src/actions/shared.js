@@ -1,10 +1,10 @@
 import { getUsers, getInitialData, getQuestions, getUserById} from "../backend/api";
-import { _saveQuestion } from "../backend/_DATA";
+import { _saveQuestion,_saveQuestionAnswer } from "../backend/_DATA";
 import { receiveUser } from "./user";
 import { startLoading, stopLoading } from "./loading";
 import { setAuthedUser } from "./authedUser";
 import { receiveQuestions,receiveAQuestions,receiveUQuestions } from "./questions";
-//import { receiveUQuestions } from "./uquestions";
+import { saveQuestionAnswerAction } from "./saveVote";
 
 export function authenticate(id,password){
     return async (dispatch) => {
@@ -87,6 +87,14 @@ export function getUnansweredQuestions(user) {
 
       }
    }
+  }
+
+  export function saveQuestionAnswer(info) {
+    return (dispatch) => {
+      return _saveQuestionAnswer(info).then(() => {
+        dispatch(saveQuestionAnswerAction(info));
+      });
+    };
   }
 
 /****************************************************************************/
