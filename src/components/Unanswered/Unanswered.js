@@ -10,7 +10,7 @@ const Unanswered = ({  questions }) => {
     
       {questions&&
        
-          <Table questions={Object.values(questions)} answered={false}/>
+          <Table questions={questions} answered={false}/>
          
       
       }

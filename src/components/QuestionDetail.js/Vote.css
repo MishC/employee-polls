@@ -1,9 +1,9 @@
-.Vote {align-self:center;justify-self: left; position:relative; right:70px; padding:20px; 
+.Vote {align-self:center;justify-self: left; position:relative; padding:20px; 
 }
 .Vote form {flex-direction: row;}
 .Vote label {display: flex; font-size:16px;}
 
-.vote-button { display:block; 
+.vote-button { 
     width: 100px; 
     height: 50px; 
      margin-left: 60px;
