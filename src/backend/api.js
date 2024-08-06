@@ -14,7 +14,8 @@ export async function getUsers() {
 
   export async function authenticateUser(id,password){
     const users=await _getUsers();
-   return Object.values(users).map(user => Object.values(user)).find(user =>  user.includes(id)&& user.includes(password))?users[id]:
+   return Object.values(users).map(user => Object.values(user)).find(user =>
+      user.includes(id)&& user.includes(password))?users[id]:
    console.log("Fail login, try again!")
   }
   export async function getUserById(id){

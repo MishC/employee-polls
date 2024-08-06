@@ -3,7 +3,7 @@ import { _saveQuestion,_saveQuestionAnswer } from "../backend/_DATA";
 import { receiveUser } from "./user";
 import { startLoading, stopLoading } from "./loading";
 import { setAuthedUser } from "./authedUser";
-import { receiveQuestions,receiveAQuestions,receiveUQuestions } from "./questions";
+import { receiveQuestions } from "./questions";
 import { saveQuestionAnswerAction } from "./saveVote";
 
 export function authenticate(id,password){
@@ -39,10 +39,10 @@ export function getUnansweredQuestions(user) {
     const answeredIds = Object.keys(answers);
     
     try {
-      const ques = await getQuestions(); // Assuming getQuestions fetches all questions
+      const ques = await getQuestions();
       const uQuestions = Object.values(ques).filter(q => !answeredIds.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp);
 
-      dispatch(receiveUQuestions(uQuestions));
+      dispatch(receiveQuestions(uQuestions,false));
     } catch (error) {
       console.error("Failed to fetch questions:", error);
       throw error;
@@ -59,9 +59,10 @@ export function getUnansweredQuestions(user) {
          
       try {
         const ques = await getQuestions();
-        const aQuestions = Object.values(ques).filter(q=>arr.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp);
+        const aQuestions = Object.values(ques).filter(q=>
+          arr.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp);
        
-        await dispatch(receiveAQuestions(aQuestions));
+        await dispatch(receiveQuestions(aQuestions,true));
    
         return aQuestions;
       } catch (error) {
@@ -121,7 +122,8 @@ export function getAllUsers() {
   
       try {
         const questions = await getQuestions();
-        dispatch(receiveQuestions(questions));
+        dispatch(receiveQuestions(questions,true));
+        dispatch(receiveQuestions(questions,false));
         setTimeout(()=> dispatch(stopLoading()),500)
         return questions;
       } catch (error) {
@@ -138,7 +140,8 @@ export function handleInitialData() {
     dispatch(startLoading());
     return getInitialData().then(({ users, questions }) => {
       dispatch(receiveUser(users));
-      dispatch(receiveQuestions(users));
+      dispatch(receiveQuestions(questions,false));
+      dispatch(receiveQuestions(questions,true));
 
       dispatch(receiveQuestions())
       dispatch(stopLoading());

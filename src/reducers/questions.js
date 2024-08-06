@@ -1,24 +1,25 @@
-import { RECEIVE_AQUESTIONS, RECEIVE_QUESTIONS, RECEIVE_UQUESTIONS } from '../actions/questions';
+import { RECEIVE_QUESTIONS } from '../actions/questions';
 import  {ADD_QUESTION} from '../actions/question';
 import {SAVE_QUESTION_ANSWER} from '../actions/saveVote';
 
-export default function receiveQuestions(state = {}, action) {
+export default function receiveQuestions(state={}, action) {
   switch (action.type) {
-    case RECEIVE_UQUESTIONS:
-      return {
-        ...state,
-        unanswered: action.payload.uquestions,
-      };
-    case RECEIVE_AQUESTIONS:
-      return {
-        ...state,
-        answered: action.payload.aquestions,
-      };
-    case RECEIVE_QUESTIONS:
-      return {
-        ...state,
-        all: action.questions,
-      };
+      case RECEIVE_QUESTIONS:
+        return {
+          ...state,
+          
+            ...state.questions,
+            ...action.payload.questions.reduce((acc, question) => {
+              acc[question.id] = {
+                ...question,
+                answered: action.payload.answered,
+              };
+              return acc;
+            }, {})
+          
+        };
+            
+      
       case ADD_QUESTION:
         return {
           ...state,
@@ -26,7 +27,7 @@ export default function receiveQuestions(state = {}, action) {
             ...state.questions,
             [action.question.id]: action.question,
           },
-          unanswered: [...state.unanswered, action.question],
+          unanswered: [...state, action.question],
         };
     default:
       return state;

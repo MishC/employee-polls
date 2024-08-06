@@ -1,0 +1,74 @@
+.AddQuestion {
+    display: flex;
+    flex-direction: column;
+   
+  }
+  
+  .AddQuestion h2 {
+    margin-bottom: 0px; margin-top:70px;
+  }
+  
+  .add-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top:40px;
+    
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  label {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .add-input {
+    width: 100%;
+    max-width: 500px;
+    height: 40px;
+    margin-top: 8px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid var(shadow-grey);
+    border-radius: 4px;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .add-input:focus {
+    border-color: dodgerblue;
+  }
+  
+  .add-button, .back-button {
+    width: 120px;
+    height: 50px;
+    padding:8px;
+    font-size: 15px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+    margin:0 40px;
+  }
+  
+  .add-button:hover, .back-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  label {font-size:16px;}
+
+  .AddQuestion h2 {font-weight:500}
+  .AddQuestion h4 {text-align: center;}
+  
