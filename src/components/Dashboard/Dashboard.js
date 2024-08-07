@@ -34,8 +34,7 @@ const Dashboard=({user,dispatch})=> {
     </div>)
   }
   const mapStateToProps = ({user}) => ({
-    user:user
-    
+    user
   });
   
   export default connect(mapStateToProps)(Dashboard);
