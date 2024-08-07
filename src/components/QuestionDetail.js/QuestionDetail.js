@@ -17,14 +17,18 @@ const QuestionDetail = ({ questions,user }) => {
   const { question_id } = useParams();
   const navigate=useNavigate();
 
-  if (!questions) {
+  if (!questions||!user) {
     return <div className="QuestionDetail-fail"><h2>Sorry, question not found</h2><br/>
 
           <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>
           </div>;
   }
-  const question=Object.values(questions) .find(q=>q.id===question_id);
+  
+  const question=Object.values(questions).find(q=>q.id===question_id);
+ if (!question||question===null){return <div className="QuestionDetail-fail"><h2>Sorry, question not found</h2><br/>
 
+  <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>
+  </div>}
   return (
     <div className="QuestionDetail">
 
