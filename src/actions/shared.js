@@ -4,7 +4,7 @@ import { receiveUser } from "./user";
 import { startLoading, stopLoading } from "./loading";
 import { setAuthedUser } from "./authedUser";
 import { receiveQuestions } from "./questions";
-import { saveQuestionAnswerAction } from "./saveVote";
+import { saveAnswer } from "./saveVote";
 
 export function authenticate(id,password){
     return async (dispatch) => {
@@ -90,14 +90,7 @@ export function getUnansweredQuestions(user) {
    }
   }
 
-  export function saveQuestionAnswer(info) {
-    return (dispatch) => {
-      return _saveQuestionAnswer(info).then(() => {
-        dispatch(saveQuestionAnswerAction(info));
-      });
-    };
-  }
-
+ 
 /****************************************************************************/
 export function getAllUsers() {
     return async (dispatch) => {
