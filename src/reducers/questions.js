@@ -30,7 +30,6 @@ export default function receiveQuestions(state = initialState, action) {
     case SAVE_QUESTION_ANSWER:
       const { authedUser, qid, answer } = action.payload;
 
-      // Check if the question exists in the state
       const question = state[qid];
       if (!question) {
         console.error(`Question with id ${qid} not found in state`);
@@ -44,7 +43,7 @@ export default function receiveQuestions(state = initialState, action) {
           answered: true,
           [answer]: {
             ...question[answer],
-            votes: (question[answer]?.votes || []).concat(authedUser),
+             votes:[...question[answer].votes,authedUser],
           },
         },
       };
