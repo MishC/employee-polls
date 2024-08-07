@@ -1,10 +1,12 @@
 import "./Vote.css";
 import React, { useState } from 'react';
 import { connect } from "react-redux";
-import { saveQuestionAnswer } from "../../actions/shared";
+import { saveAnswer } from '../../actions/saveVote';
 
-const Vote = ({ question, authedUser, saveQuestionAnswer }) => {
+const Vote = ({ dispatch,question,question_id, id, user }) => {
   const [selectedOption, setSelectedOption] = useState('');
+
+
 
   const handleChange = (e) => {
     setSelectedOption(e.target.value);
@@ -13,11 +15,12 @@ const Vote = ({ question, authedUser, saveQuestionAnswer }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (selectedOption) {
-      saveQuestionAnswer({ authedUser, qid: question.id, answer: selectedOption });
+      dispatch(saveAnswer({ authedUser: id, qid: question_id, answer: selectedOption }));
     }
   };
 
-  if (!question) {
+ 
+  if (!question||!question.author) {
     return <h2 className="error">Oops, question not found!</h2>;
   }
 
@@ -52,12 +55,10 @@ const Vote = ({ question, authedUser, saveQuestionAnswer }) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  authedUser:user
+const mapStateToProps = ({ authedUser, user }) => ({
+  id:authedUser.id, user
 });
 
-const mapDispatchToProps = {
-  saveQuestionAnswer
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Vote);
+
+export default connect(mapStateToProps)(Vote);

@@ -1,22 +1,44 @@
+// reducers/saveVote.js
 import { SAVE_QUESTION_ANSWER } from '../actions/saveVote';
 
-export default function users(state = {}, action) {
+const initialState = {
+  user: {
+    answers: {},
+    // other user properties
+  },
+  questions: {},
+};
+
+function saveVote(state = initialState, action) {
   switch (action.type) {
     case SAVE_QUESTION_ANSWER:
-      const { authedUser, qid, answer } = action;
+      const { authedUser, qid, answer } = action.payload;
+      const qidKey = JSON.stringify(qid); 
 
       return {
         ...state,
-        [authedUser]: {
-          ...state[authedUser],
+        user: {
+          ...state.user,
           answers: {
-            ...((state[authedUser] && state[authedUser].answers) || {}),
-            [qid]: answer,
+            ...state.user.answers,
+            [qidKey]: answer,
           },
-         // question:{}
+        },
+        questions: {
+          ...state.questions,
+          [qidKey]: {
+            ...state.questions[qidKey],
+            answered: true,
+            [answer]: {
+              ...state.questions[qidKey]?.[answer],
+              votes: (state.questions[qidKey]?.[answer]?.votes || []).concat(authedUser),
+            },
+          },
         },
       };
     default:
       return state;
   }
 }
+
+export default saveVote;

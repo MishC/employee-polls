@@ -11,5 +11,4 @@ export default combineReducers({
   user,
   questions,
   loading,
-  saveVote
   });
