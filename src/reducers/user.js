@@ -1,4 +1,5 @@
 import { RECEIVE_USER } from "../actions/user";
+import { ADD_QUESTION } from '../actions/question';
 import { SAVE_QUESTION_ANSWER } from '../actions/saveVote';
 
 const initialState = {
@@ -18,6 +19,11 @@ export default function user(state = initialState, action) {
         ...state,
         ...userWithoutPassword,
       };
+      case ADD_QUESTION:
+        return {...state,
+          questions:{...state.questions.concat(action.question.id)}
+
+        };
 
     case SAVE_QUESTION_ANSWER:
       const { authedUser, qid, answer } = action.payload;

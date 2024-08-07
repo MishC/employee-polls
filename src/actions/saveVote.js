@@ -14,7 +14,7 @@ export function saveAnswer({ authedUser, qid, answer }) {
 }
 
 
-/*Here one have all users in the state:
+/*Here one have all users in the state: I don't, so I don't call the api
 export  function handleSaveAnswer({ authedUser, qid, answer  })
 {
 return  (dispatch) => { 
