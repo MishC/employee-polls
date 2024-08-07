@@ -21,7 +21,7 @@ export default function user(state = initialState, action) {
       };
       case ADD_QUESTION:
         return {...state,
-          questions:{...state.questions.concat(action.question.id)}
+          questions: [...state.questions, action.question.id]
 
         };
 
