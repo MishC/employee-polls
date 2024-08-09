@@ -1,9 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { createRoot } from "react-dom/client";
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from "react-redux";
 import reducer from "./reducers";
 import middleware from './middlewares/middleware'; 
@@ -13,9 +12,6 @@ const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware),
 });
-
-
-
 
 
 createRoot(document.getElementById('root')).render(
