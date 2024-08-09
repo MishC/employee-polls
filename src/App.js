@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect, Fragment } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-import { BeatLoader, CircleLoader,ClimbingBoxLoader } from 'react-spinners';
+import { BeatLoader, CircleLoader} from 'react-spinners';
 import Nav from './components/Nav/Nav';
 import Signin from './components/Signin/Signin';
 import Dashboard from './components/Dashboard/Dashboard';

@@ -1,6 +1,6 @@
 import { getUsers, getInitialData, getQuestions, getUserById} from "../backend/api";
 import { _saveQuestion,_saveQuestionAnswer } from "../backend/_DATA";
-import { receiveUser } from "./user";
+import { receiveUser,receiveAllUsers } from "./user";
 import { startLoading, stopLoading } from "./loading";
 import { setAuthedUser } from "./authedUser";
 import { receiveQuestions } from "./questions";
@@ -119,16 +119,12 @@ export function getUnansweredQuestions(user) {
 /****************************************************************************/
 export function getAllUsers() {
     return async (dispatch) => {
-      dispatch(startLoading()); 
   
       try {
-        const users = await getUsers();
-        dispatch(receiveUser(users)).sort((a, b) => b.timestamp - a.timestamp);
-        dispatch(stopLoading());
-        return users;
+        return await getUsers().then(users=>dispatch(receiveAllUsers(users)));      
+
       } catch (error) {
         console.error("Failed to fetch users:", error);
-        dispatch(stopLoading());
         throw error;
       }
     };
@@ -161,7 +157,6 @@ export function handleInitialData() {
       dispatch(receiveQuestions(questions,false));
       dispatch(receiveQuestions(questions,true));
 
-      dispatch(receiveQuestions())
       dispatch(stopLoading());
     });
   };

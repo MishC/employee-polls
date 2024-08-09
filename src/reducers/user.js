@@ -1,4 +1,4 @@
-import { RECEIVE_USER } from "../actions/user";
+import { RECEIVE_USER} from "../actions/user";
 import { ADD_QUESTION } from '../actions/question';
 import { SAVE_QUESTION_ANSWER } from '../actions/saveVote';
 
@@ -19,6 +19,7 @@ export default function user(state = initialState, action) {
         ...state,
         ...userWithoutPassword,
       };
+  
       case ADD_QUESTION:
         return {...state,
           questions: [...state.questions, action.question.id]
