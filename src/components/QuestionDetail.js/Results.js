@@ -1,9 +1,16 @@
+import { connect } from 'react-redux';
 import React, { useEffect } from 'react';
 import Plotly from 'plotly.js-dist';
 
-const Results = ({ question }) => {
+const Results = ({question , question_id,user}) => {
   useEffect(() => {
-    if (question) {
+
+    if (question_id) {
+      const answer = user.answers[question_id];
+      if (!(question[answer].votes.includes(user.id)))
+        {       question[answer].votes=[...question[answer].votes,user.id]
+
+        }
       const trace1 = {
         type: 'bar',
         x: ["Option A", "Option B"],
@@ -55,9 +62,10 @@ const Results = ({ question }) => {
 
      
     }
-  }, [question]);
+  }, []);
 
   return <div id="results-plot" className="results-plot"></div>;
 };
+const mapStateToProps = ({ user}) => ({user});
 
-export default Results;
+export default connect(mapStateToProps)(Results);
