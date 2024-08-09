@@ -4,7 +4,7 @@ import { receiveUser } from "./user";
 import { startLoading, stopLoading } from "./loading";
 import { setAuthedUser } from "./authedUser";
 import { receiveQuestions } from "./questions";
-import { saveAnswer } from "./saveVote";
+import { checkVotes } from "./checkVotes";
 
 export function authenticate(id,password){
     return async (dispatch) => {
@@ -17,6 +17,7 @@ export function authenticate(id,password){
      dispatch(setAuthedUser(id));
      dispatch(receiveUser(users[id]));
      dispatch(stopLoading());
+      
      return user
      }
      else {console.log("User(s) are not found"); dispatch(stopLoading());}
@@ -63,11 +64,12 @@ export function getUnansweredQuestions(user) {
           arr.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp);
        
         await dispatch(receiveQuestions(aQuestions,true));
+        //dispatch(checkAnswerVotes(ques,user));
+       
    
         return aQuestions;
       } catch (error) {
         console.error("Failed to fetch questions:", error);
-        dispatch(stopLoading());
         throw error;
       }
     };}
@@ -90,7 +92,30 @@ export function getUnansweredQuestions(user) {
    }
   }
 
- 
+  export function checkAnswerVotes(questions, user){
+    return (dispatch)=>{
+    try {Object.keys(questions).forEach(questionId => {
+      const question = questions[questionId];
+      if (question.answered === true) {
+        const answer = user.answers[questionId];
+        console.log("answer:",answer)
+        if (answer === 'optionOne' && !question.optionOne.votes.includes(user.id)) {
+        dispatch(checkVotes(questionId, 'optionOne', user.id));
+      } else if (answer === 'optionTwo'&& !question.optionTwo.votes.includes(user.id)) {
+        dispatch(checkVotes(questionId, 'optionTwo', user.id));
+      }
+    }
+    })
+  }
+  
+    catch (error) {
+      console.error("Cannot check the votes:", error);
+      throw error;
+    }
+  }
+}
+  
+
 /****************************************************************************/
 export function getAllUsers() {
     return async (dispatch) => {
