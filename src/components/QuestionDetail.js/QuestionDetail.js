@@ -3,7 +3,6 @@ import "./QuestionDetail.css";
 import React from 'react';
 import { Link,useNavigate,useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { useEffect  } from "react";
 import {capitalizeFirstLetter} from "../../helper/helper.js";
 import {checkVotes} from "../../actions/checkVotes.js";
 import Results from "./Results.js";
@@ -17,21 +16,7 @@ const QuestionDetail = ({ questions,user,dispatch}) => {
   const { question_id } = useParams();
   const navigate=useNavigate();
 
-  /*useEffect(() => {
-    Object.keys(questions).forEach(questionId => {
-      const question = questions[questionId];
-      if (question.answered === true) {
-        const answer = user.answers[questionId];
-        console.log("answer:",answer)
-        if (answer === 'optionOne' && !question.optionOne.votes.includes(user.id)) {
-        dispatch(checkVotes(questionId, 'optionOne', user.id));
-      } else if (answer === 'optionTwo'&& !question.optionTwo.votes.includes(user.id)) {
-        dispatch(checkVotes(questionId, 'optionTwo', user.id));
-      }
-    }
-    })
-  
-  }, [question]);*/
+ 
 
 
   if (!questions||!user) {
