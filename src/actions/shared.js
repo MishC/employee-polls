@@ -79,15 +79,15 @@ export function getUnansweredQuestions(user) {
       if (!id){console.error("Id is invalid. Cannot deliver en user.");return};
       try { 
         
-        const user = await getUserById(id).then(user=>dispatch(receiveUser(user))).then(user=> user.name);
+        const user = await getUserById(id).then(user=>
+          dispatch(receiveUser(user))).then(user=> 
+            user.name);
 
          return user;
 
       } catch (error) {
         console.error("Failed to fetch user by id:", error);
         throw error;
-
-
       }
    }
   }
