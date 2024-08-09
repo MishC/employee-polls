@@ -1,3 +1,4 @@
-.Leaderboard table  {width:80vw  ;}
-.leaderboard-title {margin-top:100px;}
-.your-name {color:blueviolet; font-weight:600 ;}
+.Leaderboard table  {width:80vw;        justify-items: right;
+}
+.leaderboard-title {margin:100px 0 30px;}
+.your-name {color:rgb(255, 137, 53); font-weight:600 ; background: #F8F8F8;}

@@ -3,6 +3,8 @@ import { getAllUsers } from "../../actions/shared";
 import { useEffect,useState } from "react";
 import Rank from "./Rank";
 import { useDispatch, connect } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrophy} from '@fortawesome/free-solid-svg-icons'; 
 const Leaderboard = ({users}) => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -13,10 +15,11 @@ const Leaderboard = ({users}) => {
 
     return (<div className="Leaderboard">
         <div className="leaderboard-title">
-        <h2>Leaderboard</h2></div>
-     <table>
+        <h1>Leaderboard <FontAwesomeIcon  icon={faTrophy} size="2x" /></h1></div>
+     <table> 
         <thead>
             <tr>
+                <th>Rank</th>
                 <th>User</th>
                 <th># Answers</th>
                 <th># Questions</th>
