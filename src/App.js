@@ -13,7 +13,7 @@ import AddQuestion from './components/AddQuestion/AddQuestion';
 const App = ({ authedUser, user }) => {
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  const [loginerror,SetLoginerror]=useState('');
+  //const [loginerror,SetLoginerror]=useState('');
 
   const dispatch = useDispatch();
 
