@@ -1,21 +1,38 @@
 import "./QuestionDetail.css";
 
 import React from 'react';
-import { Link,useNavigate,useParams  } from 'react-router-dom';
+import { Link,useNavigate,useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { useState } from "react";
+import { useEffect  } from "react";
 import {capitalizeFirstLetter} from "../../helper/helper.js";
-//import Plotly from 'plotly.js-dist';
-import { Navigate } from "react-router-dom";
+import {checkVotes} from "../../actions/checkVotes.js";
 import Results from "./Results.js";
 import Vote from "./Vote.js";
 
 
-const QuestionDetail = ({ questions,user }) => {
+
+const QuestionDetail = ({ questions,user,dispatch}) => {
   
   
   const { question_id } = useParams();
   const navigate=useNavigate();
+
+  /*useEffect(() => {
+    Object.keys(questions).forEach(questionId => {
+      const question = questions[questionId];
+      if (question.answered === true) {
+        const answer = user.answers[questionId];
+        console.log("answer:",answer)
+        if (answer === 'optionOne' && !question.optionOne.votes.includes(user.id)) {
+        dispatch(checkVotes(questionId, 'optionOne', user.id));
+      } else if (answer === 'optionTwo'&& !question.optionTwo.votes.includes(user.id)) {
+        dispatch(checkVotes(questionId, 'optionTwo', user.id));
+      }
+    }
+    })
+  
+  }, [question]);*/
+
 
   if (!questions||!user) {
     return <div className="QuestionDetail-fail"><h2>Sorry, question not found</h2><br/>
@@ -25,6 +42,13 @@ const QuestionDetail = ({ questions,user }) => {
   }
   
   const question=Object.values(questions).find(q=>q.id===question_id);
+  const answer = user.answers[question_id];
+  if (answer === 'optionOne' && !question.optionOne.votes.includes(user.id)) {
+    dispatch(checkVotes(question_id, 'optionOne', user.id));
+  } else if (answer === 'optionTwo'&& !question.optionTwo.votes.includes(user.id)) {
+    dispatch(checkVotes(question_id, 'optionTwo', user.id));
+  };
+
  if (!question||question===null){return <div className="QuestionDetail-fail"><h2>Sorry, question not found</h2><br/>
 
   <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>
@@ -42,15 +66,15 @@ const QuestionDetail = ({ questions,user }) => {
       </ol>
       { !Object.keys(user.answers)
       .includes(question_id)?<Vote question={question} question_id={question_id}/>:
-     <Results question={question}/>}
+     <Results question={question} question_id={question_id} />}
 
-      <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>
+      <div> <Link to="/" > <button className="back-button">Back</button></Link> </div>
     </div>
   );
 }
-const mapStateToProps = (state) => ({
-  questions: state.questions,
-  user:state.user
+const mapStateToProps = ({questions,user}) => ({
+  questions,
+  user
 });
 
 export default connect(mapStateToProps)(QuestionDetail);
