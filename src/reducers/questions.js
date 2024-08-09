@@ -51,16 +51,16 @@ export default function receiveQuestions(state = initialState, action) {
       };
       case CHECK_VOTES: {
         const { questionId, option, userId } = action.payload;
-        const question = state.questions?.[questionId];
+        const question = state[questionId];
         console.log(question);
         if (question&&option === 'optionOne' && !question.optionOne.votes.includes(userId)) {
           return {
             ...state,
             [questionId]:{
                  ...question,
-                 optionOne: {
-                  ...question.optionOne,
-                  votes: [...question.optionOne.votes, userId],
+                 [option]: {
+                  ...question[option],
+                  votes: [...question[option].votes, userId],
             },}
             
           }}
@@ -77,7 +77,9 @@ export default function receiveQuestions(state = initialState, action) {
           }
 
           }
+          break;
         }
+        
     default:
       return state;
   }
