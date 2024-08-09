@@ -11,7 +11,7 @@ const Table=({questions,answered})=>{
             <tr>
                 <th>Created by</th>
                 <th>Date</th>
-                <th>{answered?`See details`:`Vote`}</th>
+                <th></th>
             </tr>
         </thead>
         <Tbody questions={questions} answered={answered}/>
