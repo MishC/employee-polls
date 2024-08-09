@@ -1,18 +1,19 @@
+import "./Leaderboard.css";
 import { getAllUsers } from "../../actions/shared";
 import { useEffect,useState } from "react";
 import Rank from "./Rank";
-import { useDispatch } from "react-redux";
-const Leaderboard = () => {
-    const [users,setUsers] =useState();
+import { useDispatch, connect } from "react-redux";
+const Leaderboard = ({users}) => {
     const dispatch = useDispatch();
     useEffect(() => {
          
      const users=dispatch(getAllUsers());
      console.log(users);
- 
      }, []);
 
     return (<div className="Leaderboard">
+        <div className="leaderboard-title">
+        <h2>Leaderboard</h2></div>
      <table>
         <thead>
             <tr>
@@ -22,10 +23,15 @@ const Leaderboard = () => {
                 <th>Score</th>
             </tr>
         </thead>
-        {/*users&&<Rank users={Object.values(users)}/>*/}
+        <tbody>
+
+        {users&&<Rank users={users}/>}
+        </tbody>
+
     </table>
 
     </div>);
 }
+const mapStateToProps =({users})=>({users});
 
-export default Leaderboard;
+export default connect(mapStateToProps)(Leaderboard);
