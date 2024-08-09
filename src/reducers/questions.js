@@ -58,9 +58,9 @@ export default function receiveQuestions(state = initialState, action) {
             ...state,
             [questionId]:{
                  ...question,
-                 [option]: {
-                  ...question[option],
-                  votes: [...question[option].votes, userId],
+                 optionOne: {
+                  ...question.optionOne,
+                  votes: [...question.optionOne.votes, userId],
             },}
             
           }}
