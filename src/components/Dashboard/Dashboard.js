@@ -1,19 +1,21 @@
 import "./Dashboard.css"
 
 import {  useState } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { connect } from "react-redux";
 
 import InnitialButtons from "../InitialButtons/InnitialButtons";
+import { useLocation } from "react-router-dom";
 
-    import Polls from "../Polls/Polls";
-
+import Polls from "../Polls/Polls";
 
 
 const Dashboard=({user})=> {
    // const [avatar,setAvatar]=useState('');
     const [answered, setAnswered]=useState();
     const {name,id} = user;
-    
+    const location = useLocation();
+
+  // Access the state passed through the Link
     const setAnswer =(answer)=>{setAnswered(answer)};
     
   return (
