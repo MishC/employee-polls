@@ -10,6 +10,9 @@ import Vote from "./Vote.js";
 const QuestionDetail = ({ questions, user, dispatch }) => {
   const { question_id } = useParams();
   const navigate = useNavigate();
+  const handleBack = () => {
+    navigate("/", { state: { answered: true, isClicked: true } });
+  };
 
   const question = questions ? questions[question_id] : null;
 
@@ -45,9 +48,8 @@ const QuestionDetail = ({ questions, user, dispatch }) => {
       )}
 
       <div>
-        <Link to={{ pathname: "/", state: { answered: true, isClicked: true } }}>
-          <button className="back-button">Back</button>
-        </Link>
+        
+          <button className="back-button" onClick={handleBack}>Back</button>
       </div>
     </div>
   );
