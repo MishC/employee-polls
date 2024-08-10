@@ -9,16 +9,48 @@ const initialState = {};
 export default function receiveQuestions(state = initialState, action) {
   switch (action.type) {
     case RECEIVE_QUESTIONS:
-      return {
-        ...state,
-        ...action.payload.questions.reduce((acc, question) => {
-          acc[question.id] = {
-            ...question,
-            answered: action.payload.answered || false,
-          };
-          return acc;
-        }, {})
-      };
+      const { user, questions } = action.payload;
+      const { answers } = user;
+    
+      if (action.payload.answered) {
+        return {
+          ...state,
+          ...questions.reduce((acc, question) => {
+            const selectedOption = answers[question.id]; 
+            
+            if (selectedOption && question[selectedOption]?.votes) {
+              acc[question.id] = {
+                ...question,
+                answered: true, 
+                [selectedOption]: {
+                  ...question[selectedOption],
+                  votes: [...question[selectedOption].votes, user.id], 
+                },
+              };
+            } else {
+              acc[question.id] = {
+                ...question,
+                answered: false, 
+              };
+            }
+    
+            return acc;
+          }, {})
+        };
+      } else {
+        return {
+          ...state,
+          ...questions.reduce((acc, question) => {
+            acc[question.id] = {
+              ...question,
+              answered: false, 
+            };
+            return acc;
+          }, {})
+        };
+      }
+    
+    
 
     case ADD_QUESTION:
       return {
@@ -53,6 +85,11 @@ export default function receiveQuestions(state = initialState, action) {
         const { questionId, option, userId } = action.payload;
         const question = state[questionId];
         console.log(question);
+        
+    if (!question) {
+      return state; 
+      
+  }
         if (question&&option === 'optionOne' && !question.optionOne.votes.includes(userId)) {
           return {
             ...state,
