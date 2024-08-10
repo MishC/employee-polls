@@ -24,7 +24,7 @@ const AddQuestion = ({ handleAddQuestion, author_id }) => {
       optionTwoText: '',
       author: ''
     });
-    navigate(-1);
+    navigate("/");
   };
 
   return (
