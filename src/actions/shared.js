@@ -27,28 +27,6 @@ export function authenticate(id,password){
       dispatch(stopLoading())} 
       
 }}
-export function checkAnswerVotes(questions, user){
-  return (dispatch)=>{
-  try {Object.keys(questions).forEach(questionId => {
-    const question = questions[questionId];
-    if (question.answered === true) {
-      const answer = user.answers[questionId];
-      console.log("answer:",answer)
-      if (answer === 'optionOne' && !question.optionOne.votes.includes(user.id)) {
-      dispatch(checkVotes(questionId, 'optionOne', user.id));
-    } else if (answer === 'optionTwo'&& !question.optionTwo.votes.includes(user.id)) {
-      dispatch(checkVotes(questionId, 'optionTwo', user.id));
-    }
-  }
-  })
-}
-
-  catch (error) {
-    console.error("Cannot check the votes:", error);
-    throw error;
-  }
-}
-}
 
 export function getUnansweredQuestions(user) {
   return async (dispatch) => {
@@ -86,10 +64,8 @@ export function getUnansweredQuestions(user) {
           arr.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp);
        
         await dispatch(receiveQuestions(aQuestions,true,user));
-        //await dispatch(checkAnswerVotes(ques,user));
        
   
-        //return aQuestions;
       } catch (error) {
         console.error("Failed to fetch questions:", error);
         throw error;
@@ -162,3 +138,28 @@ export function handleInitialData() {
     });
   };
 }
+
+
+/*export function checkAnswerVotes(questions, user){
+  return (dispatch)=>{
+  try {Object.keys(questions).forEach(questionId => {
+    const question = questions[questionId];
+    if (question.answered === true) {
+      const answer = user.answers[questionId];
+      console.log("answer:",answer)
+      if (answer === 'optionOne' && !question.optionOne.votes.includes(user.id)) {
+      dispatch(checkVotes(questionId, 'optionOne', user.id));
+    } else if (answer === 'optionTwo'&& !question.optionTwo.votes.includes(user.id)) {
+      dispatch(checkVotes(questionId, 'optionTwo', user.id));
+    }
+  }
+  })
+}
+
+  catch (error) {
+    console.error("Cannot check the votes:", error);
+    throw error;
+  }
+}
+}
+*/
