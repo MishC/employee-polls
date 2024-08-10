@@ -14,12 +14,13 @@ import Polls from "../Polls/Polls";
 const Dashboard=({user,dispatch})=> {
    // const [avatar,setAvatar]=useState('');
     const [answered, setAnswered]=useState();
+    
     const {name,id} = user;
     const location = useLocation();
 
-  // Access the state passed through the Link
     const setAnswer =(answer)=>{setAnswered(answer)};
-    
+
+
  useEffect(() => 
    
   {if (user) {
@@ -27,6 +28,12 @@ const Dashboard=({user,dispatch})=> {
      dispatch(getAnsweredQuestions(user))}}
   
 , [user,dispatch]);
+
+useEffect(() => {
+  if (location.state && location.state.answered) {
+    setAnswered(location.state.answered);
+  }
+}, [location.state]);
   return (
         <div className="Dashboard">
        

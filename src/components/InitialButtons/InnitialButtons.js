@@ -1,14 +1,20 @@
 import "./InitialButtons.css";
 
 import { connect } from "react-redux";
-import { useState, useRef } from "react";
+import { useState, useRef,useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 
 
 const InitialButtons = ({ setAnswer,user,dispatch }) => {
   const unanswered = useRef(null);
   const answered = useRef(null);
   const [isClicked, setIsClicked] = useState();
-
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state && location.state.isClicked) {
+      setIsClicked(location.state.isClicked);
+    }
+  }, [location.state]);
   const handleOnClick = (e,type) => {
     //e.prevent.default;
     
