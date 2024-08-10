@@ -24,7 +24,9 @@ export default function receiveQuestions(state = initialState, action) {
                 answered: true, 
                 [selectedOption]: {
                   ...question[selectedOption],
-                  votes: [...question[selectedOption].votes, user.id], 
+                  votes: [...question[selectedOption].votes].includes(user.id)?
+                  [...question[selectedOption].votes] 
+                  : [...question[selectedOption].votes, user.id], 
                 },
               };
             } else {
