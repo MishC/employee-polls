@@ -1,3 +1,4 @@
+import  './QuestionDetail.css';
 import { connect } from 'react-redux';
 import React, { useEffect } from 'react';
 import Plotly from 'plotly.js-dist';
