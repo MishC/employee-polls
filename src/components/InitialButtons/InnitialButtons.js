@@ -8,7 +8,7 @@ import { getUnansweredQuestions,getAnsweredQuestions } from "../../actions/share
 const InitialButtons = ({ setAnswer,user,dispatch }) => {
   const unanswered = useRef(null);
   const answered = useRef(null);
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState();
 
  useEffect(() => 
    
@@ -16,7 +16,7 @@ const InitialButtons = ({ setAnswer,user,dispatch }) => {
            dispatch(getUnansweredQuestions(user));
            dispatch(getAnsweredQuestions(user))}}
         
-    , [dispatch]);
+    , [user,dispatch]);
   const handleOnClick = (e,type) => {
     //e.prevent.default;
     
