@@ -11,7 +11,7 @@ justify-content: left;justify-items:left; align-items:  center;margin: 50px auto
 
 .QuestionDetail .back-button {margin-top: 60px; width:100px; position:relative;right:15px;}
 
-#results-plot {width:60vw; margin: 0 auto; display:block }
+#results-plot {max-width:30vw; margin: 0 auto; display:block }
 
 @media screen and (max-width:780px) {
     #results-plot {width:80vw;}
