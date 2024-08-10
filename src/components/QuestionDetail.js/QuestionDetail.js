@@ -22,7 +22,7 @@ const QuestionDetail = ({ questions,user,dispatch}) => {
   if (!questions||!user) {
     return <div className="QuestionDetail-fail"><h2>Sorry, question not found</h2><br/>
 
-          <div> <Link to="/"> <button className="back-button">Back</button></Link> </div>
+          <div> <Link to={{ pathname: "/", state: { answered: true } }}> <button className="back-button">Back</button></Link> </div>
           </div>;
   }
   
@@ -53,7 +53,7 @@ const QuestionDetail = ({ questions,user,dispatch}) => {
       .includes(question_id)?<Vote question={question} question_id={question_id}/>:
      <Results question={question} question_id={question_id} />}
 
-      <div> <Link to="/" > <button className="back-button">Back</button></Link> </div>
+      <div> <Link to={{ pathname: "/", state: { answered: true, isClicked:true } }} > <button className="back-button">Back</button></Link> </div>
     </div>
   );
 }
