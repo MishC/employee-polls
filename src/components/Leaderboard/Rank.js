@@ -7,17 +7,24 @@ const Rank = ({ users,user}) => {
 console.log(Object.values(users));
     return (<Fragment>
         {Object.values(users).sort((a, b) => (b[1]+b[2]) - (a[1]+a[2])).map((item, id) => {
+          if(item[0]===user.name){ return (
+             <tr key={id} className={'your-name'}> 
+             <td>{id+1}</td>
+             <td>{<FontAwesomeIcon icon={faStar} /> } {item[0]}</td>
+             <td>{user.questions.length}</td>
+              <td> {Object.keys(user.answers).length}</td>
+              <td>{user.questions.length+Object.keys(user.answers).length}</td>
+            </tr>)
+          }
           
-          return (
-            <tr key={id} className={item[0]===user.name?'your-name':''}>
-
+          else { return( <tr>
             <td>{id+1}</td>
-          <td >{item[0]===user.name&&<FontAwesomeIcon icon={faStar} /> } {item[0]}</td>
-              <td>{item[1]}</td>
+            <td> {item[0]}</td>
+             <td>{item[1]}</td>
               <td> {item[2]}</td>
               <td>{item[1]+item[2]}</td>
-            </tr>
-          );
+            </tr>)}
+          
         })}
       </Fragment>
     );
