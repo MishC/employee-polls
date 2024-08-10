@@ -2,21 +2,13 @@ import "./InitialButtons.css";
 
 import { connect } from "react-redux";
 import { useState, useRef } from "react";
-import { useEffect } from "react";
-import { getUnansweredQuestions,getAnsweredQuestions } from "../../actions/shared";
+
 
 const InitialButtons = ({ setAnswer,user,dispatch }) => {
   const unanswered = useRef(null);
   const answered = useRef(null);
   const [isClicked, setIsClicked] = useState();
 
- useEffect(() => 
-   
-        {if (user) {
-           dispatch(getUnansweredQuestions(user));
-           dispatch(getAnsweredQuestions(user))}}
-        
-    , [user,dispatch]);
   const handleOnClick = (e,type) => {
     //e.prevent.default;
     
