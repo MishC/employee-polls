@@ -13,16 +13,6 @@ const QuestionDetail = ({ questions, user, dispatch }) => {
 
   const question = questions ? questions[question_id] : null;
 
-  /*useEffect(() => {
-    if (question && user) {
-      const answer = user.answers[question_id];
-      if (answer === 'optionOne' && !question.optionOne.votes.includes(user.id)) {
-        dispatch(checkVotes(question_id, 'optionOne', user.id));
-      } else if (answer === 'optionTwo' && !question.optionTwo.votes.includes(user.id)) {
-        dispatch(checkVotes(question_id, 'optionTwo', user.id));
-      }
-    }
-  });*/
 
   if (!question || !user) {
     return (
