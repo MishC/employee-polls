@@ -1,13 +1,22 @@
 
 import { connect } from "react-redux";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar} from '@fortawesome/free-solid-svg-icons'; 
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
+
 const Rank = ({ users,user}) => {
-console.log(Object.values(users));
+    const { width, height } = useWindowSize()
+   useEffect(()=>{
+    <Confetti width={width} height={height}/>
+   },[users])
     return (<Fragment>
-        {Object.values(users).sort((a, b) => (b[1]+b[2]) - (a[1]+a[2])).map((item, id) => {
+        {Object.values(users).sort((a, b) => (b[1]+b[2]) - (a[1]+a[2])).map((item, id) => 
+        {
+            
           if(item[0]===user.name){ return (
+            
              <tr key={id} className={'your-name'}> 
              <td>{id+1}</td>
              <td>{<FontAwesomeIcon icon={faStar} /> } {item[0]}</td>
