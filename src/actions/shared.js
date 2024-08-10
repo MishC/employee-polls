@@ -90,11 +90,7 @@ export function getUnansweredQuestions(user) {
    }
   }
 
-
-  
-
-/****************************************************************************/
-export function getAllUsers() {
+export function getAllUsers(user) {
     return async (dispatch) => {
   
       try {
@@ -106,7 +102,9 @@ export function getAllUsers() {
       }
     };
   }
+  
 
+/****************************************************************************/
   export function getAllQuestions() {
     return async (dispatch) => {
       dispatch(startLoading()); 
