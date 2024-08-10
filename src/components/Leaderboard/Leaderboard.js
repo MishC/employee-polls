@@ -14,7 +14,7 @@ const Leaderboard = ({users}) => {
          
      const users=dispatch(getAllUsers());
      console.log(users);
-     }, []);
+     }, [dispatch]);
      const navigate = useNavigate();
 
      const handleNavigate = () => {
@@ -24,25 +24,9 @@ const Leaderboard = ({users}) => {
     return (<div className="Leaderboard">
         <div className="leaderboard-title">
         <h1>Leaderboard <FontAwesomeIcon  icon={faTrophy} size="2x" /></h1></div>
-     <table> 
-        <thead>
-            <tr>
-                <th>Rank</th>
-                <th>User</th>
-                 <th># Questions</th>
-                 <th># Answers</th>
-               
-                <th>Score</th>
-            </tr>
-        </thead>
-        <tbody>
 
-        {users&&<Rank users={users}/>}
-        </tbody>
+        {users&&<Rank/>}
 
-    </table>
-
-    
           <button className="back-button" onClick={handleNavigate}>Home</button>
 
     </div>);
