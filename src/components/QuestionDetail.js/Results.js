@@ -7,17 +7,19 @@ const Results = ({question , question_id,user}) => {
   useEffect(() => {
 
     if (question_id) {
-      const answer = user.answers[question_id];
+     /* const answer = user.answers[question_id];
       if (!(question[answer].votes.includes(user.id)))
         {       question[answer].votes=[...question[answer].votes,user.id]
 
-        }
+        }*/
       const trace1 = {
         type: 'bar',
         x: ["Option A", "Option B"],
         y: [question.optionOne.votes.length, question.optionTwo.votes.length],
-        text: [`<br> <br>Votes: ${question.optionOne.votes.length}<br>${question.optionOne.votes.join(', ')}`, 
-          `<br> <br>Votes: ${question.optionTwo.votes.length}<br><br>${question.optionTwo.votes.join(', <br>')}`],
+        text: [`<br> <br>Votes: ${question.optionOne.votes.length}<br><br>
+          ${question.optionOne.votes.join(',<br> ')}`, 
+          `<br> <br>Votes: ${question.optionTwo.votes.length}<br>
+          <br>${question.optionTwo.votes.join(', <br>')}`],
 
         marker: {
           color: '#217471',
