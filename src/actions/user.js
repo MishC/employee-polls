@@ -10,6 +10,7 @@ export function receiveUser(user) {
 export function receiveAllUsers(users) {
   return{
     type: RECEIVE_ALL_USERS,
-    users
+    users,
+  
   }
 }
