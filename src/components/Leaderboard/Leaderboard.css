@@ -1,4 +1,5 @@
 .Leaderboard table  {width:80vw;        justify-items: right;
 }
+.Leaderboard table td {text-align: right;}
 .leaderboard-title {margin:100px 0 30px;}
 .your-name {color:rgb(255, 137, 53); font-weight:600 ; background: #F8F8F8;}
