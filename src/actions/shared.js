@@ -64,7 +64,7 @@ export function getUnansweredQuestions(user) {
           arr.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp);
        
         await dispatch(receiveQuestions(aQuestions,true));
-        //dispatch(checkAnswerVotes(ques,user));
+        await dispatch(checkAnswerVotes(ques,user));
        
    
         return aQuestions;
