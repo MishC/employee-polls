@@ -1,6 +1,6 @@
 import "./Leaderboard.css";
 import { getAllUsers } from "../../actions/shared";
-import { useEffect,useState } from "react";
+import { useEffect,Link } from "react";
 import Rank from "./Rank";
 import { useDispatch, connect } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,8 +21,9 @@ const Leaderboard = ({users}) => {
             <tr>
                 <th>Rank</th>
                 <th>User</th>
-                <th># Answers</th>
-                <th># Questions</th>
+                 <th># Questions</th>
+                 <th># Answers</th>
+               
                 <th>Score</th>
             </tr>
         </thead>
@@ -32,6 +33,9 @@ const Leaderboard = ({users}) => {
         </tbody>
 
     </table>
+
+    
+          <button className="back-button">Home</button>
 
     </div>);
 }
