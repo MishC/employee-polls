@@ -27,7 +27,7 @@ export default function user(state = initialState, action) {
         };
 
     case SAVE_QUESTION_ANSWER:
-      const { authedUser, qid, answer } = action.payload;
+      const {qid, answer } = action.payload;
 
       return {
         ...state,

@@ -1,8 +1,6 @@
 import "./Table.css";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUserById } from "../../backend/api";
-import { getUser } from "../../actions/shared";
+
 
 const Tbody = ({ questions,answered}) => {
 
@@ -26,6 +24,5 @@ const Tbody = ({ questions,answered}) => {
     </tbody>
   );
 };
-//const mapStateToProps=({user})=>({user});
 
-export default connect()(Tbody);
+export default Tbody;

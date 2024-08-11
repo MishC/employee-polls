@@ -1,10 +1,8 @@
 import { getUsers, getInitialData, getQuestions, getUserById} from "../backend/api";
-import { _saveQuestion,_saveQuestionAnswer } from "../backend/_DATA";
 import { receiveUser,receiveAllUsers } from "./user";
 import { startLoading, stopLoading } from "./loading";
 import { setAuthedUser } from "./authedUser";
 import { receiveQuestions } from "./questions";
-import { checkVotes } from "./checkVotes";
 
 export function authenticate(id,password){
     return async (dispatch) => {
