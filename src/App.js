@@ -29,7 +29,7 @@ const App = ({ authedUser, user }) => {
       
 
   }
-}, [userId, userPassword]);
+}, [userId, userPassword,dispatch]);
 
 
 

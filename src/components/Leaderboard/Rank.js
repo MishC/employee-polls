@@ -32,7 +32,6 @@ const ConfettiWrapper = ({ isVisible }) => {
 };
 
 const Rank = ({ users, user }) => {
-    const { width, height } = useWindowSize();
     
     if (!users || !user) return <Fragment></Fragment>;
 

@@ -1,7 +1,7 @@
 import "./InitialButtons.css";
 
 import { connect } from "react-redux";
-import { useState, useRef,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 
 
