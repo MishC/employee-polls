@@ -14,7 +14,7 @@ const ConfettiWrapper = ({ isVisible }) => {
             setShowConfetti(true);
             const timer = setTimeout(() => {
                 setShowConfetti(false);
-            }, 5000); // Adjust the duration if needed
+            }, 5000); 
 
             return () => clearTimeout(timer);
         }
@@ -41,7 +41,6 @@ const Rank = ({ users, user }) => {
         [user.name, user.questions.length, Object.keys(user.answers).length]
     ].sort((a, b) => (b[1] + b[2]) - (a[1] + a[2]));
 
-    // Check if the current user is ranked first
     const isFirstRank = rankedUsers[0] && rankedUsers[0][0] === user.name;
 
     return (

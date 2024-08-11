@@ -16,10 +16,10 @@ const Results = ({question , question_id,user}) => {
         type: 'bar',
         x: ["Option A", "Option B"],
         y: [question.optionOne.votes.length, question.optionTwo.votes.length],
-        text: [`<br> <br>Votes: ${question.optionOne.votes.length}<br><br>
+        text: [`<br> <br>Votes: ${question.optionOne.votes.length}<br>
           ${question.optionOne.votes.join(',<br> ')}`, 
           `<br> <br>Votes: ${question.optionTwo.votes.length}<br>
-          <br>${question.optionTwo.votes.join(', <br>')}`],
+         ${question.optionTwo.votes.join(', <br>')}`],
 
         marker: {
           color: '#217471',
@@ -65,7 +65,7 @@ const Results = ({question , question_id,user}) => {
 
      
     }
-  }, []);
+  }, [question.optionOne.votes,question.optionTwo.votes,question_id]);
 
   return <div id="results-plot" className="results-plot"></div>;
 };

@@ -5,9 +5,8 @@ import { useState, useRef,useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 
 
-const InitialButtons = ({ setAnswer,user,dispatch }) => {
-  const unanswered = useRef(null);
-  const answered = useRef(null);
+const InitialButtons = ({ setAnswer }) => {
+
   const [isClicked, setIsClicked] = useState();
   const location = useLocation();
   useEffect(() => {

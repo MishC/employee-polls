@@ -4,7 +4,6 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearAuthedUser } from '../../actions/authedUser';
-import { Navigate } from "react-router-dom";
 
 const Nav = ({authedUser}) => {
   const navigate=useNavigate();

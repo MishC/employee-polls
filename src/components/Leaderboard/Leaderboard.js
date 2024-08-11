@@ -1,6 +1,6 @@
 import "./Leaderboard.css";
 import { getAllUsers } from "../../actions/shared";
-import { useEffect,Link } from "react";
+import { useEffect } from "react";
 import Rank from "./Rank";
 import { useDispatch, connect } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

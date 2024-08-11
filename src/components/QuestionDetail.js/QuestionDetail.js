@@ -1,9 +1,8 @@
 import "./QuestionDetail.css";
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { capitalizeFirstLetter } from "../../helper/helper.js";
-import { checkVotes } from "../../actions/checkVotes.js";
 import Results from "./Results.js";
 import Vote from "./Vote.js";
 
