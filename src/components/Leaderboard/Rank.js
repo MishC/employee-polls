@@ -26,7 +26,7 @@ const ConfettiWrapper = ({ isVisible }) => {
         <Confetti
             width={width}
             height={height}
-            tweenDuration={4000} 
+            tweenDuration={3800} 
         />
     ) : null;
 };
