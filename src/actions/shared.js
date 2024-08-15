@@ -10,18 +10,23 @@ export function authenticate(id,password){
         
        try {
         const users = await getUsers();
-        const user=Object.values(users).map(user => Object.values(user)).find(user => user.includes(password) && user.includes(id));
+        const user=Object.values(users).map(user => 
+          Object.values(user)).find(user => 
+            user.includes(password) && user.includes(id));
      if (user) {
-     dispatch(setAuthedUser(id));
+     dispatch(setAuthedUser(id,false));
      dispatch(receiveUser(users[id]));
      dispatch(stopLoading());
       
      return user
      }
-     else {console.log("User(s) are not found"); dispatch(stopLoading());}
+     else {console.log("User not found. Invalid id or password"); 
+      dispatch(setAuthedUser("",true));
+
+      dispatch(stopLoading());}
     }
     catch(error){
-     console.error("Invalid user or password"); 
+     console.error("Invalid id or password"); 
       dispatch(stopLoading())} 
       
 }}

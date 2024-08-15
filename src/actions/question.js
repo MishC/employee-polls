@@ -1,8 +1,6 @@
 
 import {  saveQuestion } from "../backend/api";
 
-//import { _saveQuestion } from "../backend/_DATA";
-
 export const ADD_QUESTION = "ADD_QUESTION";
  function addQuestion(question) {
     return {

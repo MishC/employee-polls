@@ -13,7 +13,6 @@ import AddQuestion from './components/AddQuestion/AddQuestion';
 const App = ({ authedUser, user }) => {
   const [userId, setUserId] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  //const [loginerror,SetLoginerror]=useState('');
 
   const dispatch = useDispatch();
 
@@ -23,11 +22,7 @@ const App = ({ authedUser, user }) => {
 
   useEffect(() => {
    if (userId&&userPassword){
-    
        dispatch(authenticate(userId,userPassword));
-
-      
-
   }
 }, [userId, userPassword,dispatch]);
 
@@ -36,7 +31,6 @@ const App = ({ authedUser, user }) => {
   const userSetUp = (id, password) => {
     setUserId(id);
     setUserPassword(password);
-   
   };
 
   const generateLoader = () => {
@@ -76,6 +70,8 @@ const App = ({ authedUser, user }) => {
           </Routes>
         </Fragment>
       )}
+      
+
     </Fragment>
   );
 };
