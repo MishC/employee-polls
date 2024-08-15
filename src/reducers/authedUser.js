@@ -13,6 +13,7 @@ const initialState = {
         return {
           ...state,
           id: action.payload.id,
+          error:action.payload.error
          
 
         };

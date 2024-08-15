@@ -6,7 +6,7 @@ import { capitalizeFirstLetter } from "../../helper/helper.js";
 import Results from "./Results.js";
 import Vote from "./Vote.js";
 
-const QuestionDetail = ({ questions, user, dispatch }) => {
+const QuestionDetail = ({ questions, user }) => {
   const { question_id } = useParams();
   const navigate = useNavigate();
   const handleBack = () => {
@@ -39,6 +39,8 @@ const QuestionDetail = ({ questions, user, dispatch }) => {
         <li><h4>{capitalizeFirstLetter(question.optionOne.text)}</h4></li>
         <li><h4>{capitalizeFirstLetter(question.optionTwo.text)}</h4></li>
       </ol>
+      <div style={{fontWeight:600}}>Answered by {[...new Set([...question.optionOne.votes,...question.optionTwo.votes])].length*100/4}%</div>
+
 
       {user.answers[question_id] ? (
         <Results question={question} question_id={question_id} />
