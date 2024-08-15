@@ -1,9 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import './Signin.css';
 
-function Signin({ userSetUp }) {
-  const [error, setError] = useState(null);
+function Signin({ userSetUp ,authedUser}) {
 
   const id = useRef('');
   const password = useRef('');
@@ -12,13 +11,16 @@ function Signin({ userSetUp }) {
     e.preventDefault(); 
     
    id.current && password.current?
-      userSetUp(id.current.value, password.current.value):setError("Try again!")
-   
+      userSetUp(id.current.value, password.current.value):
+      userSetUp("", "")
+
   };
 
   return (
     <div className="Signin">
       <form onSubmit={handleSubmit}  className="Signin">
+      {(authedUser.error)&&<div className="error-message">Wrong id or password, try again.</div>}
+
         <div className="signin-input-container">
           <input
             type="text"
@@ -33,11 +35,12 @@ function Signin({ userSetUp }) {
             placeholder="Enter your password"
           />
         </div>
-        <button type="submit" className="signin-button">Submit</button>
+        <button type="submit" className="signin-button">Submit</button>      
+
       </form>
-      {error && <div className="error-message">{error}</div>}
     </div>
   );
 }
+const mapStateToProps=({authedUser})=>({authedUser});
 
-export default connect()(Signin);
+export default connect(mapStateToProps)(Signin);
