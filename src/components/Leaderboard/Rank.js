@@ -2,51 +2,27 @@ import { connect } from "react-redux";
 import { Fragment,useState,useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import useWindowSize from 'react-use/lib/useWindowSize';
-import Confetti from 'react-confetti';
-
-const ConfettiWrapper = ({ isVisible }) => {
-    const [showConfetti, setShowConfetti] = useState(isVisible);
-    const { width, height } = useWindowSize();
-
-    useEffect(() => {
-        if (isVisible) {
-            setShowConfetti(true);
-            const timer = setTimeout(() => {
-                setShowConfetti(false);
-            }, 5000); 
-
-            return () => clearTimeout(timer);
-        }
-    }, [isVisible]);
-
-  
-
-    return showConfetti ? (
-        <Confetti
-            width={width}
-            height={height}
-            tweenDuration={3800} 
-        />
-    ) : null;
-};
-
+import ConfettiWrapper from "../../helper/ConfettiWrapper";
 const Rank = ({ users, user }) => {
+    const [firstRank, setFirstRank] = useState(false);
+    const [rankedUsers, setRankedUsers]= useState([]);
     
-    if (!users || !user) return <Fragment></Fragment>;
-
-    const rankedUsers = [
+  
+    useEffect(()=>{
+    setRankedUsers( [
         ...Object.values(users).filter(u => u[0] !== user.name),
         [user.name, user.questions.length, Object.keys(user.answers).length]
-    ].sort((a, b) => (b[1] + b[2]) - (a[1] + a[2]));
+    ].sort((a, b) => (b[1] + b[2]) - (a[1] + a[2])));
 
-    const isFirstRank = rankedUsers[0] && rankedUsers[0][0] === user.name;
-
+    setFirstRank(rankedUsers[0] && rankedUsers[0][0] === user.name);
+},[users,user, rankedUsers]);
+if (!users || !user) {return <Fragment></Fragment>}
+else{
     return (
         <Fragment>
-            {isFirstRank && (
-            <ConfettiWrapper isVisible={isFirstRank} />
-        )}
+            {(users&&firstRank) && (
+            <ConfettiWrapper isVisible={firstRank} />)
+        }
             <table>
             <thead>
             <tr>
@@ -74,6 +50,7 @@ const Rank = ({ users, user }) => {
             </table>
         </Fragment>
     );
+}
 };
 
 const mapStateToProps = ({ users,user }) => ({ users,user });
