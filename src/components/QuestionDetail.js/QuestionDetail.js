@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { capitalizeFirstLetter } from "../../helper/helper.js";
 import Results from "./Results.js";
 import Vote from "./Vote.js";
+import Countdown from "../../helper/Countdown.js";
 
 const QuestionDetail = ({ questions, user }) => {
   const { question_id } = useParams();
@@ -21,6 +22,7 @@ const QuestionDetail = ({ questions, user }) => {
       <div className="QuestionDetail-fail">
         <h2>Sorry, question not found</h2>
         <br />
+        <Countdown/>
         <div>
           <Link to={{ pathname: "/", state: { answered: true } }}>
             <button className="back-button">Back</button>
