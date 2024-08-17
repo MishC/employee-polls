@@ -20,9 +20,10 @@ const QuestionDetail = ({ questions, user }) => {
   if (!question || !user) {
     return (
       <div className="QuestionDetail-fail">
+                <Countdown/>
+<br/>
         <h2>Sorry, question not found</h2>
         <br />
-        <Countdown/>
         <div>
           <Link to={{ pathname: "/", state: { answered: true } }}>
             <button className="back-button">Back</button>
