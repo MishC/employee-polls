@@ -18,8 +18,8 @@ const Countdown = () => {
   }, [counter, navigate]);
 
   return (
-    <div>
-      <h3>Redirecting in {counter} seconds...</h3>
+    <div className="error-msg">
+      <h1> {counter} </h1>
     </div>
   );
 };
