@@ -8,14 +8,17 @@ import Vote from "./Vote.js";
 import Countdown from "../../helper/Countdown.js";
 
 const QuestionDetail = ({ questions, user }) => {
+  
+ 
   const { question_id } = useParams();
   const navigate = useNavigate();
   const handleBack = () => {
     navigate("/", { state: { answered: true, isClicked: true } });
   };
+  
 
   const question = questions ? questions[question_id] : null;
-
+  
 
   if (!question || !user) {
     return (
@@ -42,11 +45,13 @@ const QuestionDetail = ({ questions, user }) => {
         <li><h4>{capitalizeFirstLetter(question.optionOne.text)}</h4></li>
         <li><h4>{capitalizeFirstLetter(question.optionTwo.text)}</h4></li>
       </ol>
-      <div style={{fontWeight:600}}>Answered by {[...new Set([...question.optionOne.votes,...question.optionTwo.votes])].length*100/4}%</div>
 
 
       {user.answers[question_id] ? (
-        <Results question={question} question_id={question_id} />
+        <Results question={question} question_id={question_id} subtitle={
+          `(Answered by ${[...new Set([...question.optionOne.votes,
+    ...question.optionTwo.votes])].length*100/4}%)`
+        }/>
       ) : (
         <Vote question={question} question_id={question_id} />
       )}

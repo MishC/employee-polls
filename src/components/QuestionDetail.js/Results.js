@@ -1,9 +1,9 @@
 import  './QuestionDetail.css';
 import { connect } from 'react-redux';
-import React, { useEffect } from 'react';
+import React,  { useEffect,Fragment } from 'react';
 import Plotly from 'plotly.js-dist';
 
-const Results = ({question , question_id,user}) => {
+const Results = ({question , question_id, subtitle,user}) => {
   useEffect(() => {
 
     if (question_id) {
@@ -33,10 +33,28 @@ const Results = ({question , question_id,user}) => {
       const data = [trace1];
 
       const layout = {
-        title: 'Number of Votes',
+        paper_bgcolor: ' rgb(243, 243, 225)',
+        plot_bgcolor: ' rgb(243, 243, 225)',
+
+        title: {text:'Number of Votes',
+          font:{weight:550, size:20}
+        },
+        annotations: [           
+          {
+              text: subtitle,
+                y:1.1,                       // #layout-annotations-x
+             xref: 'paper',                // #layout-annotations-xref
+                                     // #layout-annotations-y
+              yref: 'paper',                
+              showarrow:false, 
+              align:'center',
+              font:{color:'#217471', size:16}
+          },
+         
+      ],
         font: { size: 18 },
         barmode: 'stack',
-
+ 
         xaxis: {
           title: {
             text: ''},
@@ -68,9 +86,9 @@ const Results = ({question , question_id,user}) => {
 
      
     }
-  }, [question.optionOne.votes,question.optionTwo.votes,question_id]);
+  }, [question.optionOne.votes,question.optionTwo.votes,question_id, subtitle]);
 
-  return <div id="results-plot" className="results-plot"></div>;
+  return <Fragment><div id="results-plot" className="results-plot"></div></Fragment>;
 };
 const mapStateToProps = ({ user}) => ({user});
 
