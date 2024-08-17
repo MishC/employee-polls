@@ -16,18 +16,37 @@ export default function receiveQuestions(state = initialState, action) {
           ...questions.reduce((acc, question) => {
             const selectedOption = answers[question.id]; 
             
-            if (selectedOption && question[selectedOption]?.votes) {
+            if (selectedOption==="optionOne" && question.optionOne?.votes) {
               acc[question.id] = {
                 ...question,
                 answered: true, 
                 [selectedOption]: {
                   ...question[selectedOption],
-                  votes: [...question[selectedOption].votes].includes(user.id)?
+                  votes: ([...question.optionOne.votes].includes(user.id)||
+                  [...question.optionTwo.votes].includes(user.id))?
                   [...question[selectedOption].votes] 
                   : [...question[selectedOption].votes, user.id], 
+
                 },
               };
-            } else {
+            } 
+            else if (selectedOption==="optionTwo"&& question.optionTwo?.votes)
+              {
+                acc[question.id] = {
+                  ...question,
+                  answered: true, 
+                  [selectedOption]: {
+                    ...question[selectedOption],
+                    votes: ([...question.optionTwo.votes].includes(user.id)||
+                    [...question.optionOne.votes].includes(user.id))?
+                    [...question[selectedOption].votes] 
+                    : [...question[selectedOption].votes, user.id], 
+  
+                  },}
+
+              }
+            
+            else {
               acc[question.id] = {
                 ...question,
                 answered: false, 
