@@ -42,9 +42,8 @@ const Results = ({question , question_id, subtitle,user}) => {
         annotations: [           
           {
               text: subtitle,
-                y:1.1,                       // #layout-annotations-x
-             xref: 'paper',                // #layout-annotations-xref
-                                     // #layout-annotations-y
+                y:1.1,                       
+             xref: 'paper',                
               yref: 'paper',                
               showarrow:false, 
               align:'center',
