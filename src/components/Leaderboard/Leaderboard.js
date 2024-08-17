@@ -22,7 +22,7 @@ const Leaderboard = ({users,user}) => {
    
     return (<div className="Leaderboard">
         <div className="leaderboard-title">
-        <h1>Leaderboard <FontAwesomeIcon  icon={faTrophy} size="2x" /></h1></div>
+        <h2>Leaderboard <FontAwesomeIcon  icon={faTrophy} size="2x" /></h2></div>
 
         {users&&user&&<Rank/>}
 

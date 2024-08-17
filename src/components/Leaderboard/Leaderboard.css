@@ -1,6 +1,17 @@
-.Leaderboard table  {width:80vw;        justify-items: right;
+.Leaderboard table  {width:40vw;        justify-items: right;
 }
 .Leaderboard table td {text-align: right;}
 .leaderboard-title {margin:100px 0 30px;}
 .your-name {color:rgb(255, 137, 53); font-weight:600 ; background: #F8F8F8;}
 .Leaderboard .back-button {display:block;margin : 150px auto; }
+
+
+@media screen and (max-width:1040px) {
+    .Leaderboard table {min-width:70vw}
+    
+}
+
+@media screen and (max-width:540px) {
+    .Leaderboard table {min-width:90vw}
+    
+}
