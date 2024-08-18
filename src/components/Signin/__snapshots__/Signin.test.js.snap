@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signin renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="Signin"
+  >
+    <form
+      class="Signin"
+    >
+      <div
+        class="signin-input-container"
+      >
+        <input
+          class="signin-input"
+          data-testid="id"
+          placeholder="Enter your ID"
+          type="text"
+        />
+        <input
+          class="signin-input"
+          data-testid="psw"
+          placeholder="Enter your password"
+          type="password"
+        />
+      </div>
+      <button
+        class="signin-button"
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

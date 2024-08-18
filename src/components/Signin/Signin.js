@@ -1,6 +1,6 @@
+import './Signin.css';
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import './Signin.css';
 
 function Signin({ userSetUp ,authedUser}) {
 
@@ -23,12 +23,14 @@ function Signin({ userSetUp ,authedUser}) {
 
         <div className="signin-input-container">
           <input
+          data-testid="id"
             type="text"
             ref={id}
             className="signin-input"
             placeholder="Enter your ID"
           />
           <input
+          data-testid="psw"
             type="password"
             ref={password}
             className="signin-input"
