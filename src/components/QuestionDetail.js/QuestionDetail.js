@@ -46,7 +46,7 @@ const QuestionDetail = ({ questions, user }) => {
         <li><h4>{capitalizeFirstLetter(question.optionTwo.text)}</h4></li>
       </ol>
 
-
+      
       {user.answers[question_id] ? (
         <Results question={question} question_id={question_id} subtitle={
           `(Answered by ${[...new Set([...question.optionOne.votes,
