@@ -33,8 +33,8 @@ const Results = ({question , question_id, subtitle,user}) => {
       const data = [trace1];
 
       const layout = {
-        paper_bgcolor: ' rgb(243, 243, 225)',
-        plot_bgcolor: ' rgb(243, 243, 225)',
+        paper_bgcolor: ' #fff',
+        plot_bgcolor: ' #fff',
 
         title: {text:'Number of Votes',
           font:{weight:550, size:20}

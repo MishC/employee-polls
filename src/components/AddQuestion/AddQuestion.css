@@ -1,12 +1,10 @@
 .AddQuestion {
     display: flex;
     flex-direction: column;
-   
   }
   
   .AddQuestion h2 {
-    margin-bottom: 0px; margin-top:70px;
-  }
+    margin:100px 0 30px;  }
   
   .add-input-container {
     display: flex;
