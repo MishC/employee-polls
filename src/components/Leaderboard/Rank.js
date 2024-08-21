@@ -7,15 +7,17 @@ const Rank = ({ users, user }) => {
     const [firstRank, setFirstRank] = useState(false);
     const [rankedUsers, setRankedUsers]= useState([]);
     
-  
-    useEffect(()=>{
-    setRankedUsers( [
-        ...Object.values(users).filter(u => u[0] !== user.name),
-        [user.name, user.questions.length, Object.keys(user.answers).length]
-    ].sort((a, b) => (b[1] + b[2]) - (a[1] + a[2])));
-
-    setFirstRank(rankedUsers[0] && rankedUsers[0][0] === user.name);
-},[users,user, rankedUsers]);
+    useEffect(() => {
+        const updatedRankedUsers = [
+            ...Object.values(users).filter(u => u[0] !== user.name),
+            [user.name, user.questions.length, Object.keys(user.answers).length]
+        ].sort((a, b) => (b[1] + b[2]) - (a[1] + a[2]));
+    
+        setRankedUsers(updatedRankedUsers);
+    
+        setFirstRank(updatedRankedUsers[0] && updatedRankedUsers[0][0] === user.name);
+    }, [users, user]);  
+    
 if (!users || !user) {return <Fragment></Fragment>}
 else{
     return (
