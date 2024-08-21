@@ -37,7 +37,7 @@ function Signin({ userSetUp ,authedUser}) {
             placeholder="Enter your password"
           />
         </div>
-        <button type="submit" className="signin-button">Submit</button>      
+        <button type="submit" className="signin-button"  data-testid="submit">Submit</button>      
 
       </form>
     </div>
