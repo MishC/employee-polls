@@ -1,22 +1,27 @@
 import { connect } from "react-redux";
-import { Fragment,useState,useEffect } from "react";
+import { Fragment,useState,useEffect,useMemo } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import ConfettiWrapper from "../../helper/ConfettiWrapper";
 const Rank = ({ users, user }) => {
     const [firstRank, setFirstRank] = useState(false);
     const [rankedUsers, setRankedUsers]= useState([]);
-    
-    useEffect(() => {
-        const updatedRankedUsers = [
-            ...Object.values(users).filter(u => u[0] !== user.name),
-            [user.name, user.questions.length, Object.keys(user.answers).length]
+
+
+    const calculatedRankedUsers = useMemo(() => {
+        return [
+          ...Object.values(users).filter(u => u[0] !== user.name),
+          [user.name, user.questions.length, Object.keys(user.answers).length]
         ].sort((a, b) => (b[1] + b[2]) - (a[1] + a[2]));
-    
-        setRankedUsers(updatedRankedUsers);
-    
-        setFirstRank(updatedRankedUsers[0] && updatedRankedUsers[0][0] === user.name);
-    }, [users, user]);  
+           }, [users, user]);
+           
+
+      useEffect(() => {
+        if (JSON.stringify(rankedUsers) !== JSON.stringify(calculatedRankedUsers)) {
+          setRankedUsers(calculatedRankedUsers);}
+          setFirstRank(calculatedRankedUsers[0] && calculatedRankedUsers[0][0] === user.name);
+                  }, [calculatedRankedUsers, rankedUsers,user]);
+        
     
 if (!users || !user) {return <Fragment></Fragment>}
 else{
