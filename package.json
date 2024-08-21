@@ -57,6 +57,7 @@
     "babel-jest": "^29.7.0",
     "jest": "^27.5.1",
     "jest-canvas-mock": "^2.5.2",
-    "react-test-renderer": "^18.3.1"
+    "react-test-renderer": "^18.3.1",
+    "webpack-dev-server": "^5.0.4"
   }
 }
