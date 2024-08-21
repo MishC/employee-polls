@@ -34,6 +34,7 @@ const ConfettiWrapper = ({ isVisible }) => {
             width={width}
             height={height}
             tweenDuration={3800}
+            numberOfPieces={200}
         />
     ) : null;
 };
