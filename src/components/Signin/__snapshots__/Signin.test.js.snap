@@ -26,6 +26,7 @@ exports[`Signin renders correctly 1`] = `
       </div>
       <button
         class="signin-button"
+        data-testid="submit"
         type="submit"
       >
         Submit
