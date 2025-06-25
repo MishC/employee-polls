@@ -21,6 +21,12 @@ Please read the full task describtion in [here](https://github.com/MishC/employe
 2. To set up SQLite database to store questions and answers in backend. Now "fake database" where all data exist permanently are in the file employee-polls/src/backend/_DATA.js
 
 
+### How to run a program
+
+ 1. Git clone [https://github.com/MishC/employee-polls.git](https://github.com/MishC/employee-polls.git)  and change directory to the project
+ 2. `npm install`
+ 3. npm run dev
+    
 ### `npm start`
 
 Runs the app in the development mode.\
