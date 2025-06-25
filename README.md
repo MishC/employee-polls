@@ -1,6 +1,6 @@
 # Employee-polls. 
 
-Webapp written in React. Employees can add a poll (a question) with answers A or B. For each question, you can see details like who posed that question and who answered it. That employee with the biggest sum of questions asked + questions answered is the winner on the leaderboard.
+A delicate webapp written in React and state is tored in Redux. Employees can add a poll (a question) with answers A or B. For each question, you can see details like who posed that question and who answered it. That employee with the biggest sum of questions asked + questions answered is the winner on the leaderboard.
 
 ### See live
 
@@ -13,7 +13,9 @@ F.e. name: `sarahedo` password: `password123`
 
 ### What must be updated
 
-Test files with Jest to catch possible errors.
+1. Test files with Jest to catch possible errors.
+
+2. To set up SQLite database to store questions and answers in backend.
 
 
 ### `npm start`
