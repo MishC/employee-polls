@@ -11,11 +11,14 @@ Here you can see passwords and ids which you can use for login employee-polls/sr
 F.e. name: `sarahedo` password: `password123`
 
 
+Please read the full task describtion in [https://github.com/MishC/employee-polls/tree/main/src#readme]( here )
+
+
 ### What must be updated
 
 1. Test files with Jest to catch possible errors.
 
-2. To set up SQLite database to store questions and answers in backend.
+2. To set up SQLite database to store questions and answers in backend. Now "fake database" where all data exist permanently are in the file employee-polls/src/backend/_DATA.js
 
 
 ### `npm start`
