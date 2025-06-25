@@ -25,18 +25,20 @@ Please read the full task describtion in [here](https://github.com/MishC/employe
 
  1. Git clone [https://github.com/MishC/employee-polls.git](https://github.com/MishC/employee-polls.git)  and change directory to the project
  2. `npm install`
- 3. `npm run dev`
+ 3. `npm run dev` or `npm start`
+
+!--  Explanation what CRA set up  -->    
     
-### `npm start`
+##### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### `npm test`
+##### `npm test`
 
 There are some jest files there initially. Must be updated.
 
-### `npm run build`
+##### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
