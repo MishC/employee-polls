@@ -25,7 +25,7 @@ Please read the full task describtion in [here](https://github.com/MishC/employe
 
  1. Git clone [https://github.com/MishC/employee-polls.git](https://github.com/MishC/employee-polls.git)  and change directory to the project
  2. `npm install`
- 3. npm run dev
+ 3. `npm run dev`
     
 ### `npm start`
 
