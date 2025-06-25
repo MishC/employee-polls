@@ -4,7 +4,7 @@ Webapp written in React. Employees can add a poll (a question) with answers A or
 
 ### See live
 
-[delicate-otter-cd5c3f.netlify.app]
+[employee polls](delicate-otter-cd5c3f.netlify.app)
 
 Here you can see passwords and ids which you can use for login employee-polls/src/backend/_DATA.js
 
