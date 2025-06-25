@@ -1,4 +1,15 @@
-Employee-polls. Where employees can add a poll (a question) with answers A or B. For each question, you can see details like who posed that question and who answered it. That employee with the biggest sum of questions asked + questions answered is the winner on the leaderboard.
+# Employee-polls. 
+
+Webapp written in React. Employees can add a poll (a question) with answers A or B. For each question, you can see details like who posed that question and who answered it. That employee with the biggest sum of questions asked + questions answered is the winner on the leaderboard.
+
+### See live
+
+[delicate-otter-cd5c3f.netlify.app]
+
+Here you can see passwords and ids which you can use for login employee-polls/src/backend/_DATA.js
+
+F.e. name: `sarahedo` password: `password123`
+
 
 ### What must be updated
 
