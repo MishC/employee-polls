@@ -1,4 +1,4 @@
-# Employee-polls. 
+# Employee poll
 
 A delicate webapp written in React with states stored in Redux store. Employees can add a poll (a question) with answers A or B. For each question, you can see details like who posed that question and who answered it. That employee with the biggest sum of questions asked + questions answered is the winner on the leaderboard.
 
