@@ -11,7 +11,7 @@ Here you can see passwords and ids which you can use for login employee-polls/sr
 F.e. name: `sarahedo` password: `password123`
 
 
-Please read the full task describtion in [https://github.com/MishC/employee-polls/tree/main/src#readme]( here )
+Please read the full task describtion in [here](https://github.com/MishC/employee-polls/tree/main/src#readme)
 
 
 ### What must be updated
